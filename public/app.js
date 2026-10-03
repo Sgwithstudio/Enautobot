@@ -82,7 +82,7 @@ function renderLogin(msg) {
     catch (e) { document.getElementById('err').textContent = e.message; }
   };
   document.getElementById('go').onclick = go;
-  document.getElementById('pin').onkeydown = e => e.key === 'Enter' && go();
+  document.getElementById('pin').onkeydown = e => { if (e.key === 'Enter') go(); };
 }
 
 /* ---------- learn ---------- */
@@ -182,7 +182,7 @@ function renderTalk() {
   drawChat();
   const send = t => { t = t.trim(); if (t && !chat.busy) { document.getElementById('ti').value = ''; turn(t); } };
   document.getElementById('snd').onclick = () => send(document.getElementById('ti').value);
-  document.getElementById('ti').onkeydown = e => e.key === 'Enter' && send(e.target.value);
+  document.getElementById('ti').onkeydown = e => { if (e.key === 'Enter') send(e.target.value); };
   const mic = document.getElementById('mic');
   mic.onclick = async () => {
     if (chat.busy) return; mic.classList.add('rec');

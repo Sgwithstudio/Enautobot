@@ -121,7 +121,7 @@ function serveStatic(req, res, url) {
   let p = url.pathname === '/' ? '/index.html' : url.pathname;
   const f = path.normalize(path.join(PUB, p));
   if (!f.startsWith(PUB) || !fs.existsSync(f) || !fs.statSync(f).isFile()) { res.writeHead(404); return res.end('Not found'); }
-  res.writeHead(200, { 'Content-Type': MIME[path.extname(f)] || 'application/octet-stream', 'Cache-Control': p === '/sw.js' ? 'no-cache' : 'public, max-age=300' });
+  res.writeHead(200, { 'Content-Type': MIME[path.extname(f)] || 'application/octet-stream', 'Cache-Control': /\.(html|js|css)$/.test(p) ? 'no-store' : 'public, max-age=86400' });
   fs.createReadStream(f).pipe(res);
 }
 
