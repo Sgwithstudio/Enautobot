@@ -1,0 +1,1247 @@
+{
+ "topics": [
+  {
+   "id": "meeting",
+   "title": "Meetings",
+   "icon": "📅",
+   "group": "business",
+   "vocab": [
+    {
+     "w": "agenda",
+     "ipa": "/əˈdʒen.də/",
+     "vi": "chương trình họp",
+     "ex": "Let's go through the agenda first.",
+     "exvi": "Hãy xem qua chương trình họp trước."
+    },
+    {
+     "w": "follow up",
+     "ipa": "/ˈfɒl.əʊ ʌp/",
+     "vi": "theo dõi, tiếp tục xử lý",
+     "ex": "I'll follow up with you tomorrow.",
+     "exvi": "Mai tôi sẽ liên hệ lại với bạn."
+    },
+    {
+     "w": "deadline",
+     "ipa": "/ˈded.laɪn/",
+     "vi": "hạn chót",
+     "ex": "The deadline is next Friday.",
+     "exvi": "Hạn chót là thứ Sáu tuần sau."
+    },
+    {
+     "w": "action item",
+     "ipa": "/ˈæk.ʃən ˈaɪ.təm/",
+     "vi": "đầu việc cần làm",
+     "ex": "We have three action items.",
+     "exvi": "Chúng ta có ba đầu việc."
+    },
+    {
+     "w": "on the same page",
+     "ipa": "/ɒn ðə seɪm peɪdʒ/",
+     "vi": "cùng hiểu như nhau",
+     "ex": "Let's make sure we're on the same page.",
+     "exvi": "Hãy chắc rằng chúng ta hiểu giống nhau."
+    },
+    {
+     "w": "wrap up",
+     "ipa": "/ræp ʌp/",
+     "vi": "kết thúc, chốt lại",
+     "ex": "Let's wrap up in five minutes.",
+     "exvi": "Hãy kết thúc trong năm phút nữa."
+    },
+    {
+     "w": "bring up",
+     "ipa": "/brɪŋ ʌp/",
+     "vi": "đề cập đến",
+     "ex": "Can I bring up one more point?",
+     "exvi": "Tôi nêu thêm một điểm được không?"
+    },
+    {
+     "w": "minutes",
+     "ipa": "/ˈmɪn.ɪts/",
+     "vi": "biên bản họp",
+     "ex": "I'll send the minutes after the call.",
+     "exvi": "Tôi sẽ gửi biên bản sau cuộc gọi."
+    }
+   ],
+   "dialogue": {
+    "title": "Starting a team meeting",
+    "roles": {
+     "A": "Sarah (manager)",
+     "B": "Tom"
+    },
+    "lines": [
+     {
+      "r": "A",
+      "en": "Good morning, everyone. Let's get started with the agenda.",
+      "vi": "Chào buổi sáng mọi người. Bắt đầu với chương trình họp nhé."
+     },
+     {
+      "r": "B",
+      "en": "Sure. Can I bring up the delay on the Hanoi project first?",
+      "vi": "Vâng. Tôi nêu vấn đề chậm tiến độ dự án Hà Nội trước được không?"
+     },
+     {
+      "r": "A",
+      "en": "Of course. What's the main issue?",
+      "vi": "Tất nhiên. Vấn đề chính là gì?"
+     },
+     {
+      "r": "B",
+      "en": "The supplier missed the deadline, so we need two more weeks.",
+      "vi": "Nhà cung cấp trễ hạn, nên chúng ta cần thêm hai tuần."
+     },
+     {
+      "r": "A",
+      "en": "Okay. Who can follow up with them today?",
+      "vi": "Được. Ai có thể liên hệ họ hôm nay?"
+     },
+     {
+      "r": "B",
+      "en": "I can. I'll call them right after this meeting.",
+      "vi": "Tôi làm được. Tôi sẽ gọi ngay sau cuộc họp."
+     },
+     {
+      "r": "A",
+      "en": "Great. Let's make sure we're on the same page: new deadline is the 25th.",
+      "vi": "Tốt. Để chắc chúng ta hiểu giống nhau: hạn mới là ngày 25."
+     },
+     {
+      "r": "B",
+      "en": "Yes, that's right. I'll send the minutes this afternoon.",
+      "vi": "Vâng đúng vậy. Chiều nay tôi sẽ gửi biên bản."
+     }
+    ]
+   }
+  },
+  {
+   "id": "negotiation",
+   "title": "Negotiation",
+   "icon": "🤝",
+   "group": "business",
+   "vocab": [
+    {
+     "w": "proposal",
+     "ipa": "/prəˈpəʊ.zəl/",
+     "vi": "đề xuất",
+     "ex": "We'll review your proposal today.",
+     "exvi": "Hôm nay chúng tôi sẽ xem xét đề xuất."
+    },
+    {
+     "w": "discount",
+     "ipa": "/ˈdɪs.kaʊnt/",
+     "vi": "giảm giá",
+     "ex": "Can you offer a bulk discount?",
+     "exvi": "Bạn có giảm giá khi mua số lượng lớn không?"
+    },
+    {
+     "w": "terms",
+     "ipa": "/tɜːmz/",
+     "vi": "điều khoản",
+     "ex": "Let's discuss the payment terms.",
+     "exvi": "Hãy bàn về điều khoản thanh toán."
+    },
+    {
+     "w": "compromise",
+     "ipa": "/ˈkɒm.prə.maɪz/",
+     "vi": "thỏa hiệp",
+     "ex": "I think we can reach a compromise.",
+     "exvi": "Tôi nghĩ ta có thể thỏa hiệp."
+    },
+    {
+     "w": "budget",
+     "ipa": "/ˈbʌdʒ.ɪt/",
+     "vi": "ngân sách",
+     "ex": "That's above our budget.",
+     "exvi": "Cái đó vượt ngân sách của chúng tôi."
+    },
+    {
+     "w": "counteroffer",
+     "ipa": "/ˈkaʊn.tər.ɒf.ər/",
+     "vi": "đề nghị đối ứng",
+     "ex": "We'd like to make a counteroffer.",
+     "exvi": "Chúng tôi muốn đưa ra đề nghị đối ứng."
+    },
+    {
+     "w": "deal",
+     "ipa": "/diːl/",
+     "vi": "thỏa thuận",
+     "ex": "It's a deal!",
+     "exvi": "Chốt nhé!"
+    },
+    {
+     "w": "flexible",
+     "ipa": "/ˈflek.sə.bəl/",
+     "vi": "linh hoạt",
+     "ex": "We can be flexible on delivery.",
+     "exvi": "Chúng tôi linh hoạt về giao hàng."
+    }
+   ],
+   "dialogue": {
+    "title": "Negotiating a price",
+    "roles": {
+     "A": "Linda (buyer)",
+     "B": "Mr. Chen (seller)"
+    },
+    "lines": [
+     {
+      "r": "A",
+      "en": "Thank you for the proposal. The price is a bit above our budget.",
+      "vi": "Cảm ơn về đề xuất. Giá hơi vượt ngân sách của chúng tôi."
+     },
+     {
+      "r": "B",
+      "en": "I understand. How much were you hoping to spend?",
+      "vi": "Tôi hiểu. Bạn dự định chi bao nhiêu?"
+     },
+     {
+      "r": "A",
+      "en": "If we order 500 units, can you offer a discount?",
+      "vi": "Nếu đặt 500 cái, bạn giảm giá được không?"
+     },
+     {
+      "r": "B",
+      "en": "For that quantity, I can give you eight percent off.",
+      "vi": "Với số lượng đó, tôi giảm được tám phần trăm."
+     },
+     {
+      "r": "A",
+      "en": "Could we make it ten percent? We're flexible on the payment terms.",
+      "vi": "Mười phần trăm được không? Chúng tôi linh hoạt về điều khoản thanh toán."
+     },
+     {
+      "r": "B",
+      "en": "Hmm. Ten percent if you pay within fifteen days.",
+      "vi": "Hmm. Mười phần trăm nếu bạn thanh toán trong mười lăm ngày."
+     },
+     {
+      "r": "A",
+      "en": "That sounds like a fair compromise. We have a deal.",
+      "vi": "Nghe là một thỏa hiệp hợp lý. Chốt nhé."
+     },
+     {
+      "r": "B",
+      "en": "Wonderful. I'll send the contract today.",
+      "vi": "Tuyệt. Tôi sẽ gửi hợp đồng hôm nay."
+     }
+    ]
+   }
+  },
+  {
+   "id": "email-phone",
+   "title": "Phone & Email",
+   "icon": "📞",
+   "group": "business",
+   "vocab": [
+    {
+     "w": "reach out",
+     "ipa": "/riːtʃ aʊt/",
+     "vi": "liên hệ",
+     "ex": "Feel free to reach out anytime.",
+     "exvi": "Cứ liên hệ bất cứ lúc nào."
+    },
+    {
+     "w": "attachment",
+     "ipa": "/əˈtætʃ.mənt/",
+     "vi": "tệp đính kèm",
+     "ex": "Please see the attachment.",
+     "exvi": "Vui lòng xem tệp đính kèm."
+    },
+    {
+     "w": "regarding",
+     "ipa": "/rɪˈɡɑː.dɪŋ/",
+     "vi": "về việc",
+     "ex": "I'm writing regarding your order.",
+     "exvi": "Tôi viết về đơn hàng của bạn."
+    },
+    {
+     "w": "put through",
+     "ipa": "/pʊt θruː/",
+     "vi": "nối máy",
+     "ex": "I'll put you through to sales.",
+     "exvi": "Tôi sẽ nối máy cho phòng kinh doanh."
+    },
+    {
+     "w": "hold on",
+     "ipa": "/həʊld ɒn/",
+     "vi": "chờ máy",
+     "ex": "Could you hold on a moment?",
+     "exvi": "Bạn chờ máy một chút nhé?"
+    },
+    {
+     "w": "get back to",
+     "ipa": "/ɡet bæk tuː/",
+     "vi": "phản hồi lại",
+     "ex": "I'll get back to you by noon.",
+     "exvi": "Tôi sẽ phản hồi bạn trước trưa."
+    },
+    {
+     "w": "cc",
+     "ipa": "/ˌsiːˈsiː/",
+     "vi": "đồng gửi",
+     "ex": "I've cc'd my manager.",
+     "exvi": "Tôi đã cc quản lý."
+    },
+    {
+     "w": "best regards",
+     "ipa": "/best rɪˈɡɑːdz/",
+     "vi": "trân trọng",
+     "ex": "Best regards, Anna",
+     "exvi": "Trân trọng, Anna"
+    }
+   ],
+   "dialogue": {
+    "title": "A business phone call",
+    "roles": {
+     "A": "Receptionist",
+     "B": "Caller"
+    },
+    "lines": [
+     {
+      "r": "A",
+      "en": "Good afternoon, Delta Trading. How may I help you?",
+      "vi": "Chào buổi chiều, Delta Trading đây. Tôi giúp gì được bạn?"
+     },
+     {
+      "r": "B",
+      "en": "Hello, I'm calling regarding an invoice. Could I speak to Mr. Lee?",
+      "vi": "Xin chào, tôi gọi về một hóa đơn. Cho tôi nói chuyện với ông Lee được không?"
+     },
+     {
+      "r": "A",
+      "en": "May I ask who's calling?",
+      "vi": "Xin cho biết ai đang gọi ạ?"
+     },
+     {
+      "r": "B",
+      "en": "This is Mai from Sunrise Company.",
+      "vi": "Tôi là Mai từ công ty Sunrise."
+     },
+     {
+      "r": "A",
+      "en": "Could you hold on a moment? I'll put you through.",
+      "vi": "Bạn chờ máy một chút nhé? Tôi sẽ nối máy."
+     },
+     {
+      "r": "A",
+      "en": "I'm sorry, he's in a meeting. Can I take a message?",
+      "vi": "Xin lỗi, ông ấy đang họp. Tôi ghi lời nhắn được không?"
+     },
+     {
+      "r": "B",
+      "en": "Yes, please ask him to get back to me. I'll also email the attachment.",
+      "vi": "Vâng, nhờ ông ấy phản hồi tôi. Tôi cũng sẽ gửi email kèm tệp."
+     },
+     {
+      "r": "A",
+      "en": "Certainly. I'll pass that on. Have a nice day.",
+      "vi": "Chắc chắn rồi. Tôi sẽ chuyển lời. Chúc bạn một ngày tốt lành."
+     }
+    ]
+   }
+  },
+  {
+   "id": "sales",
+   "title": "Sales & Customers",
+   "icon": "🛒",
+   "group": "business",
+   "vocab": [
+    {
+     "w": "quote",
+     "ipa": "/kwəʊt/",
+     "vi": "báo giá",
+     "ex": "Can you send me a quote?",
+     "exvi": "Bạn gửi báo giá giúp tôi nhé?"
+    },
+    {
+     "w": "lead time",
+     "ipa": "/liːd taɪm/",
+     "vi": "thời gian giao hàng",
+     "ex": "The lead time is two weeks.",
+     "exvi": "Thời gian giao hàng là hai tuần."
+    },
+    {
+     "w": "in stock",
+     "ipa": "/ɪn stɒk/",
+     "vi": "còn hàng",
+     "ex": "Is this item in stock?",
+     "exvi": "Mặt hàng này còn không?"
+    },
+    {
+     "w": "warranty",
+     "ipa": "/ˈwɒr.ən.ti/",
+     "vi": "bảo hành",
+     "ex": "It comes with a one-year warranty.",
+     "exvi": "Nó được bảo hành một năm."
+    },
+    {
+     "w": "customize",
+     "ipa": "/ˈkʌs.tə.maɪz/",
+     "vi": "tùy chỉnh",
+     "ex": "We can customize the design.",
+     "exvi": "Chúng tôi có thể tùy chỉnh thiết kế."
+    },
+    {
+     "w": "place an order",
+     "ipa": "/pleɪs ən ˈɔː.dər/",
+     "vi": "đặt hàng",
+     "ex": "I'd like to place an order.",
+     "exvi": "Tôi muốn đặt hàng."
+    },
+    {
+     "w": "return policy",
+     "ipa": "/rɪˈtɜːn ˈpɒl.ə.si/",
+     "vi": "chính sách đổi trả",
+     "ex": "What's your return policy?",
+     "exvi": "Chính sách đổi trả của bạn thế nào?"
+    },
+    {
+     "w": "follow-up call",
+     "ipa": "/ˈfɒl.əʊ ʌp kɔːl/",
+     "vi": "cuộc gọi tiếp theo",
+     "ex": "I'll schedule a follow-up call.",
+     "exvi": "Tôi sẽ lên lịch cuộc gọi tiếp theo."
+    }
+   ],
+   "dialogue": {
+    "title": "Helping a customer",
+    "roles": {
+     "A": "Sales rep",
+     "B": "Customer"
+    },
+    "lines": [
+     {
+      "r": "A",
+      "en": "Welcome! Are you looking for anything in particular?",
+      "vi": "Chào mừng! Bạn đang tìm gì cụ thể không?"
+     },
+     {
+      "r": "B",
+      "en": "Yes, I need 200 office chairs. Are they in stock?",
+      "vi": "Có, tôi cần 200 chiếc ghế văn phòng. Còn hàng không?"
+     },
+     {
+      "r": "A",
+      "en": "We have 120 now. The rest has a lead time of ten days.",
+      "vi": "Hiện có 120. Số còn lại cần mười ngày."
+     },
+     {
+      "r": "B",
+      "en": "That works. Do they come with a warranty?",
+      "vi": "Được. Có bảo hành không?"
+     },
+     {
+      "r": "A",
+      "en": "Yes, two years. We can also customize the color.",
+      "vi": "Có, hai năm. Chúng tôi cũng tùy chỉnh được màu."
+     },
+     {
+      "r": "B",
+      "en": "Great. Could you send me a quote today?",
+      "vi": "Tuyệt. Hôm nay bạn gửi báo giá cho tôi được không?"
+     },
+     {
+      "r": "A",
+      "en": "Absolutely. And what's the best email to reach you?",
+      "vi": "Chắc chắn. Email nào liên hệ bạn tốt nhất?"
+     },
+     {
+      "r": "B",
+      "en": "It's on my card. I'd like to place an order by Friday.",
+      "vi": "Có trên danh thiếp. Tôi muốn đặt hàng trước thứ Sáu."
+     }
+    ]
+   }
+  },
+  {
+   "id": "interview",
+   "title": "Job Interview",
+   "icon": "💼",
+   "group": "business",
+   "vocab": [
+    {
+     "w": "strength",
+     "ipa": "/streŋθ/",
+     "vi": "điểm mạnh",
+     "ex": "My biggest strength is teamwork.",
+     "exvi": "Điểm mạnh nhất của tôi là làm việc nhóm."
+    },
+    {
+     "w": "experience",
+     "ipa": "/ɪkˈspɪə.ri.əns/",
+     "vi": "kinh nghiệm",
+     "ex": "I have five years of experience.",
+     "exvi": "Tôi có năm năm kinh nghiệm."
+    },
+    {
+     "w": "responsible for",
+     "ipa": "/rɪˈspɒn.sə.bəl fɔː/",
+     "vi": "chịu trách nhiệm",
+     "ex": "I was responsible for the budget.",
+     "exvi": "Tôi chịu trách nhiệm ngân sách."
+    },
+    {
+     "w": "achievement",
+     "ipa": "/əˈtʃiːv.mənt/",
+     "vi": "thành tích",
+     "ex": "My proudest achievement was this project.",
+     "exvi": "Thành tích tự hào nhất là dự án này."
+    },
+    {
+     "w": "salary expectation",
+     "ipa": "/ˈsæl.ər.i ˌek.spekˈteɪ.ʃən/",
+     "vi": "mức lương mong muốn",
+     "ex": "What are your salary expectations?",
+     "exvi": "Mức lương bạn mong muốn là bao nhiêu?"
+    },
+    {
+     "w": "resume",
+     "ipa": "/ˈrez.ə.meɪ/",
+     "vi": "sơ yếu lý lịch",
+     "ex": "I've attached my resume.",
+     "exvi": "Tôi đã đính kèm CV."
+    },
+    {
+     "w": "challenge",
+     "ipa": "/ˈtʃæl.ɪndʒ/",
+     "vi": "thách thức",
+     "ex": "I enjoy a new challenge.",
+     "exvi": "Tôi thích thử thách mới."
+    },
+    {
+     "w": "available",
+     "ipa": "/əˈveɪ.lə.bəl/",
+     "vi": "sẵn sàng",
+     "ex": "I'm available to start next month.",
+     "exvi": "Tôi có thể bắt đầu từ tháng sau."
+    }
+   ],
+   "dialogue": {
+    "title": "Interview questions",
+    "roles": {
+     "A": "Interviewer",
+     "B": "Candidate"
+    },
+    "lines": [
+     {
+      "r": "A",
+      "en": "Thanks for coming in. Could you tell me about your experience?",
+      "vi": "Cảm ơn bạn đã đến. Hãy kể về kinh nghiệm của bạn."
+     },
+     {
+      "r": "B",
+      "en": "Sure. I've worked in marketing for five years.",
+      "vi": "Vâng. Tôi làm marketing được năm năm."
+     },
+     {
+      "r": "A",
+      "en": "What were you responsible for in your last role?",
+      "vi": "Ở vị trí trước, bạn chịu trách nhiệm gì?"
+     },
+     {
+      "r": "B",
+      "en": "I managed social media and a budget of fifty thousand dollars.",
+      "vi": "Tôi quản lý mạng xã hội và ngân sách năm mươi nghìn đô."
+     },
+     {
+      "r": "A",
+      "en": "What would you say is your greatest strength?",
+      "vi": "Điểm mạnh lớn nhất của bạn là gì?"
+     },
+     {
+      "r": "B",
+      "en": "I'm good at solving problems under pressure.",
+      "vi": "Tôi giỏi giải quyết vấn đề dưới áp lực."
+     },
+     {
+      "r": "A",
+      "en": "When would you be available to start?",
+      "vi": "Khi nào bạn có thể bắt đầu?"
+     },
+     {
+      "r": "B",
+      "en": "I can start in four weeks. Thank you for the opportunity.",
+      "vi": "Tôi bắt đầu được sau bốn tuần. Cảm ơn vì cơ hội."
+     }
+    ]
+   }
+  },
+  {
+   "id": "smalltalk",
+   "title": "Small Talk",
+   "icon": "💬",
+   "group": "daily",
+   "vocab": [
+    {
+     "w": "How's it going?",
+     "ipa": "/haʊz ɪt ˈɡəʊ.ɪŋ/",
+     "vi": "Dạo này sao rồi?",
+     "ex": "Hey, how's it going?",
+     "exvi": "Này, dạo này sao rồi?"
+    },
+    {
+     "w": "catch up",
+     "ipa": "/kætʃ ʌp/",
+     "vi": "nói chuyện cập nhật",
+     "ex": "Let's catch up over coffee.",
+     "exvi": "Mình cà phê nói chuyện nhé."
+    },
+    {
+     "w": "by the way",
+     "ipa": "/baɪ ðə weɪ/",
+     "vi": "nhân tiện",
+     "ex": "By the way, nice shoes!",
+     "exvi": "Nhân tiện, giày đẹp đó!"
+    },
+    {
+     "w": "hang out",
+     "ipa": "/hæŋ aʊt/",
+     "vi": "đi chơi, tụ tập",
+     "ex": "Want to hang out this weekend?",
+     "exvi": "Cuối tuần đi chơi không?"
+    },
+    {
+     "w": "no worries",
+     "ipa": "/nəʊ ˈwʌr.iz/",
+     "vi": "đừng lo",
+     "ex": "No worries, it happens.",
+     "exvi": "Đừng lo, chuyện thường mà."
+    },
+    {
+     "w": "sounds good",
+     "ipa": "/saʊndz ɡʊd/",
+     "vi": "nghe hay đấy",
+     "ex": "Sounds good to me!",
+     "exvi": "Nghe ổn đó!"
+    },
+    {
+     "w": "lately",
+     "ipa": "/ˈleɪt.li/",
+     "vi": "gần đây",
+     "ex": "I've been busy lately.",
+     "exvi": "Gần đây tôi bận."
+    },
+    {
+     "w": "take care",
+     "ipa": "/teɪk keə/",
+     "vi": "giữ gìn sức khỏe",
+     "ex": "Take care! See you soon.",
+     "exvi": "Giữ sức khỏe nhé! Hẹn sớm gặp."
+    }
+   ],
+   "dialogue": {
+    "title": "Meeting a friend",
+    "roles": {
+     "A": "Amy",
+     "B": "Ben"
+    },
+    "lines": [
+     {
+      "r": "A",
+      "en": "Hey Ben! Long time no see. How's it going?",
+      "vi": "Chào Ben! Lâu quá không gặp. Dạo này sao rồi?"
+     },
+     {
+      "r": "B",
+      "en": "Hi Amy! Pretty good, just busy with work lately. You?",
+      "vi": "Chào Amy! Khá ổn, gần đây bận việc thôi. Còn bạn?"
+     },
+     {
+      "r": "A",
+      "en": "Same here. We should catch up properly sometime.",
+      "vi": "Mình cũng vậy. Mình nên gặp nói chuyện cho đàng hoàng."
+     },
+     {
+      "r": "B",
+      "en": "Definitely. Are you free this weekend?",
+      "vi": "Chắc chắn rồi. Cuối tuần này bạn rảnh không?"
+     },
+     {
+      "r": "A",
+      "en": "Saturday works. Want to grab brunch?",
+      "vi": "Thứ Bảy được. Đi ăn brunch nhé?"
+     },
+     {
+      "r": "B",
+      "en": "Sounds good! There's a new place near the park.",
+      "vi": "Nghe ổn! Có quán mới gần công viên."
+     },
+     {
+      "r": "A",
+      "en": "Perfect. By the way, I loved your jacket!",
+      "vi": "Tuyệt. Nhân tiện, mình thích áo khoác của bạn!"
+     },
+     {
+      "r": "B",
+      "en": "Thanks! See you Saturday. Take care!",
+      "vi": "Cảm ơn! Thứ Bảy gặp nhé. Giữ sức khỏe!"
+     }
+    ]
+   }
+  },
+  {
+   "id": "restaurant",
+   "title": "Restaurant",
+   "icon": "🍽️",
+   "group": "daily",
+   "vocab": [
+    {
+     "w": "reservation",
+     "ipa": "/ˌrez.əˈveɪ.ʃən/",
+     "vi": "đặt bàn",
+     "ex": "I have a reservation for two.",
+     "exvi": "Tôi đã đặt bàn cho hai người."
+    },
+    {
+     "w": "menu",
+     "ipa": "/ˈmen.juː/",
+     "vi": "thực đơn",
+     "ex": "Could we see the menu, please?",
+     "exvi": "Cho chúng tôi xem thực đơn."
+    },
+    {
+     "w": "appetizer",
+     "ipa": "/ˈæp.ɪ.taɪ.zər/",
+     "vi": "món khai vị",
+     "ex": "We'll start with an appetizer.",
+     "exvi": "Chúng tôi gọi món khai vị trước."
+    },
+    {
+     "w": "recommend",
+     "ipa": "/ˌrek.əˈmend/",
+     "vi": "gợi ý",
+     "ex": "What do you recommend?",
+     "exvi": "Bạn gợi ý món nào?"
+    },
+    {
+     "w": "allergic",
+     "ipa": "/əˈlɜː.dʒɪk/",
+     "vi": "dị ứng",
+     "ex": "I'm allergic to peanuts.",
+     "exvi": "Tôi dị ứng đậu phộng."
+    },
+    {
+     "w": "medium rare",
+     "ipa": "/ˈmiː.di.əm reər/",
+     "vi": "tái vừa",
+     "ex": "I'd like the steak medium rare.",
+     "exvi": "Cho tôi bít tết tái vừa."
+    },
+    {
+     "w": "the bill",
+     "ipa": "/ðə bɪl/",
+     "vi": "hóa đơn",
+     "ex": "Could we have the bill, please?",
+     "exvi": "Cho chúng tôi tính tiền."
+    },
+    {
+     "w": "split the bill",
+     "ipa": "/splɪt ðə bɪl/",
+     "vi": "chia tiền",
+     "ex": "Can we split the bill?",
+     "exvi": "Chia tiền được không?"
+    }
+   ],
+   "dialogue": {
+    "title": "Ordering dinner",
+    "roles": {
+     "A": "Waiter",
+     "B": "Guest"
+    },
+    "lines": [
+     {
+      "r": "A",
+      "en": "Good evening. Do you have a reservation?",
+      "vi": "Chào buổi tối. Quý khách có đặt bàn không?"
+     },
+     {
+      "r": "B",
+      "en": "Yes, under Nguyen, a table for two.",
+      "vi": "Có, tên Nguyễn, bàn cho hai người."
+     },
+     {
+      "r": "A",
+      "en": "Right this way. Here's the menu. Can I get you something to drink?",
+      "vi": "Mời đi lối này. Đây là thực đơn. Quý khách uống gì ạ?"
+     },
+     {
+      "r": "B",
+      "en": "Just water for now. What do you recommend?",
+      "vi": "Tạm thời nước lọc. Bạn gợi ý món gì?"
+     },
+     {
+      "r": "A",
+      "en": "The grilled salmon is our specialty.",
+      "vi": "Cá hồi nướng là món đặc biệt của chúng tôi."
+     },
+     {
+      "r": "B",
+      "en": "Sounds great. I'm allergic to nuts, is that okay?",
+      "vi": "Nghe tuyệt. Tôi dị ứng hạt, có sao không?"
+     },
+     {
+      "r": "A",
+      "en": "No nuts at all. Would you like an appetizer?",
+      "vi": "Hoàn toàn không có hạt. Quý khách dùng khai vị không?"
+     },
+     {
+      "r": "B",
+      "en": "Yes, the soup. And later, could we split the bill?",
+      "vi": "Có, món súp. Và lát nữa chia hóa đơn được không?"
+     }
+    ]
+   }
+  },
+  {
+   "id": "travel",
+   "title": "Travel & Airport",
+   "icon": "✈️",
+   "group": "daily",
+   "vocab": [
+    {
+     "w": "boarding pass",
+     "ipa": "/ˈbɔː.dɪŋ pɑːs/",
+     "vi": "thẻ lên máy bay",
+     "ex": "Here is my boarding pass.",
+     "exvi": "Đây là thẻ lên máy bay."
+    },
+    {
+     "w": "check in",
+     "ipa": "/tʃek ɪn/",
+     "vi": "làm thủ tục",
+     "ex": "Where can I check in?",
+     "exvi": "Tôi làm thủ tục ở đâu?"
+    },
+    {
+     "w": "gate",
+     "ipa": "/ɡeɪt/",
+     "vi": "cổng",
+     "ex": "Your gate is B12.",
+     "exvi": "Cổng của bạn là B12."
+    },
+    {
+     "w": "delayed",
+     "ipa": "/dɪˈleɪd/",
+     "vi": "bị hoãn",
+     "ex": "My flight is delayed.",
+     "exvi": "Chuyến bay của tôi bị hoãn."
+    },
+    {
+     "w": "luggage",
+     "ipa": "/ˈlʌɡ.ɪdʒ/",
+     "vi": "hành lý",
+     "ex": "I have one piece of luggage.",
+     "exvi": "Tôi có một kiện hành lý."
+    },
+    {
+     "w": "customs",
+     "ipa": "/ˈkʌs.təmz/",
+     "vi": "hải quan",
+     "ex": "We went through customs.",
+     "exvi": "Chúng tôi đã qua hải quan."
+    },
+    {
+     "w": "window seat",
+     "ipa": "/ˈwɪn.dəʊ siːt/",
+     "vi": "ghế cạnh cửa sổ",
+     "ex": "Could I have a window seat?",
+     "exvi": "Cho tôi ghế cạnh cửa sổ?"
+    },
+    {
+     "w": "layover",
+     "ipa": "/ˈleɪ.əʊ.vər/",
+     "vi": "quá cảnh",
+     "ex": "I have a three-hour layover.",
+     "exvi": "Tôi quá cảnh ba tiếng."
+    }
+   ],
+   "dialogue": {
+    "title": "At the check-in desk",
+    "roles": {
+     "A": "Agent",
+     "B": "Traveler"
+    },
+    "lines": [
+     {
+      "r": "A",
+      "en": "Good morning. May I see your passport, please?",
+      "vi": "Chào buổi sáng. Cho tôi xem hộ chiếu ạ?"
+     },
+     {
+      "r": "B",
+      "en": "Here you go. I'd like a window seat if possible.",
+      "vi": "Đây ạ. Nếu được cho tôi ghế cạnh cửa sổ."
+     },
+     {
+      "r": "A",
+      "en": "Sure. Are you checking any luggage?",
+      "vi": "Được. Quý khách ký gửi hành lý chứ?"
+     },
+     {
+      "r": "B",
+      "en": "Yes, one suitcase.",
+      "vi": "Vâng, một vali."
+     },
+     {
+      "r": "A",
+      "en": "Here's your boarding pass. Your gate is A7.",
+      "vi": "Thẻ lên máy bay của quý khách đây. Cổng A7."
+     },
+     {
+      "r": "B",
+      "en": "Thanks. Is the flight on time?",
+      "vi": "Cảm ơn. Chuyến bay đúng giờ chứ?"
+     },
+     {
+      "r": "A",
+      "en": "It's delayed by thirty minutes, I'm afraid.",
+      "vi": "Rất tiếc, bị hoãn ba mươi phút."
+     },
+     {
+      "r": "B",
+      "en": "No problem. Have a nice day!",
+      "vi": "Không sao. Chúc một ngày tốt lành!"
+     }
+    ]
+   }
+  },
+  {
+   "id": "shopping",
+   "title": "Shopping",
+   "icon": "🛍️",
+   "group": "daily",
+   "vocab": [
+    {
+     "w": "try on",
+     "ipa": "/traɪ ɒn/",
+     "vi": "thử đồ",
+     "ex": "Can I try this on?",
+     "exvi": "Tôi thử cái này được không?"
+    },
+    {
+     "w": "size",
+     "ipa": "/saɪz/",
+     "vi": "cỡ",
+     "ex": "Do you have this in a larger size?",
+     "exvi": "Có cỡ lớn hơn không?"
+    },
+    {
+     "w": "on sale",
+     "ipa": "/ɒn seɪl/",
+     "vi": "đang giảm giá",
+     "ex": "This jacket is on sale.",
+     "exvi": "Áo khoác này đang giảm giá."
+    },
+    {
+     "w": "refund",
+     "ipa": "/ˈriː.fʌnd/",
+     "vi": "hoàn tiền",
+     "ex": "I'd like a refund.",
+     "exvi": "Tôi muốn hoàn tiền."
+    },
+    {
+     "w": "receipt",
+     "ipa": "/rɪˈsiːt/",
+     "vi": "biên lai",
+     "ex": "Please keep your receipt.",
+     "exvi": "Hãy giữ biên lai."
+    },
+    {
+     "w": "cash or card",
+     "ipa": "/kæʃ ɔː kɑːd/",
+     "vi": "tiền mặt hay thẻ",
+     "ex": "Cash or card?",
+     "exvi": "Tiền mặt hay thẻ?"
+    },
+    {
+     "w": "fitting room",
+     "ipa": "/ˈfɪt.ɪŋ ruːm/",
+     "vi": "phòng thử đồ",
+     "ex": "The fitting room is over there.",
+     "exvi": "Phòng thử đồ ở đằng kia."
+    },
+    {
+     "w": "a bit pricey",
+     "ipa": "/ə bɪt ˈpraɪ.si/",
+     "vi": "hơi đắt",
+     "ex": "It's a bit pricey for me.",
+     "exvi": "Hơi đắt với tôi."
+    }
+   ],
+   "dialogue": {
+    "title": "Buying clothes",
+    "roles": {
+     "A": "Shop assistant",
+     "B": "Customer"
+    },
+    "lines": [
+     {
+      "r": "A",
+      "en": "Hi there! Can I help you find anything?",
+      "vi": "Chào bạn! Tôi giúp bạn tìm gì không?"
+     },
+     {
+      "r": "B",
+      "en": "I'm looking for a blue shirt. Do you have a medium?",
+      "vi": "Tôi tìm áo sơ mi xanh. Có cỡ M không?"
+     },
+     {
+      "r": "A",
+      "en": "Yes, right here. The fitting room is over there.",
+      "vi": "Có, đây ạ. Phòng thử đồ ở đằng kia."
+     },
+     {
+      "r": "B",
+      "en": "It fits well. How much is it?",
+      "vi": "Vừa lắm. Giá bao nhiêu?"
+     },
+     {
+      "r": "A",
+      "en": "It's fifty dollars, but it's on sale for forty.",
+      "vi": "Năm mươi đô, nhưng đang giảm còn bốn mươi."
+     },
+     {
+      "r": "B",
+      "en": "That's a good price. I'll take it.",
+      "vi": "Giá tốt. Tôi lấy."
+     },
+     {
+      "r": "A",
+      "en": "Cash or card?",
+      "vi": "Tiền mặt hay thẻ?"
+     },
+     {
+      "r": "B",
+      "en": "Card, please. And can I get a receipt?",
+      "vi": "Thẻ ạ. Cho tôi xin biên lai nhé."
+     }
+    ]
+   }
+  },
+  {
+   "id": "health",
+   "title": "Doctor & Health",
+   "icon": "🩺",
+   "group": "daily",
+   "vocab": [
+    {
+     "w": "symptom",
+     "ipa": "/ˈsɪmp.təm/",
+     "vi": "triệu chứng",
+     "ex": "What are your symptoms?",
+     "exvi": "Triệu chứng của bạn là gì?"
+    },
+    {
+     "w": "fever",
+     "ipa": "/ˈfiː.vər/",
+     "vi": "sốt",
+     "ex": "I've had a fever since last night.",
+     "exvi": "Tôi bị sốt từ tối qua."
+    },
+    {
+     "w": "headache",
+     "ipa": "/ˈhed.eɪk/",
+     "vi": "đau đầu",
+     "ex": "I have a terrible headache.",
+     "exvi": "Tôi đau đầu dữ dội."
+    },
+    {
+     "w": "prescription",
+     "ipa": "/prɪˈskrɪp.ʃən/",
+     "vi": "đơn thuốc",
+     "ex": "Here's your prescription.",
+     "exvi": "Đây là đơn thuốc của bạn."
+    },
+    {
+     "w": "appointment",
+     "ipa": "/əˈpɔɪnt.mənt/",
+     "vi": "cuộc hẹn",
+     "ex": "I'd like to make an appointment.",
+     "exvi": "Tôi muốn đặt lịch hẹn."
+    },
+    {
+     "w": "get some rest",
+     "ipa": "/ɡet sʌm rest/",
+     "vi": "nghỉ ngơi",
+     "ex": "You should get some rest.",
+     "exvi": "Bạn nên nghỉ ngơi."
+    },
+    {
+     "w": "side effects",
+     "ipa": "/saɪd ɪˈfekts/",
+     "vi": "tác dụng phụ",
+     "ex": "Are there any side effects?",
+     "exvi": "Có tác dụng phụ không?"
+    },
+    {
+     "w": "sore throat",
+     "ipa": "/sɔː θrəʊt/",
+     "vi": "đau họng",
+     "ex": "I have a sore throat and a cough.",
+     "exvi": "Tôi đau họng và ho."
+    }
+   ],
+   "dialogue": {
+    "title": "Seeing a doctor",
+    "roles": {
+     "A": "Doctor",
+     "B": "Patient"
+    },
+    "lines": [
+     {
+      "r": "A",
+      "en": "Good morning. What seems to be the problem?",
+      "vi": "Chào buổi sáng. Bạn gặp vấn đề gì?"
+     },
+     {
+      "r": "B",
+      "en": "I have a sore throat and a headache.",
+      "vi": "Tôi đau họng và đau đầu."
+     },
+     {
+      "r": "A",
+      "en": "How long have you had these symptoms?",
+      "vi": "Bạn bị các triệu chứng này bao lâu rồi?"
+     },
+     {
+      "r": "B",
+      "en": "About three days. I also had a fever last night.",
+      "vi": "Khoảng ba ngày. Tối qua tôi cũng sốt."
+     },
+     {
+      "r": "A",
+      "en": "I'll give you a prescription. Take it twice a day.",
+      "vi": "Tôi kê đơn thuốc. Uống hai lần mỗi ngày."
+     },
+     {
+      "r": "B",
+      "en": "Are there any side effects?",
+      "vi": "Có tác dụng phụ không?"
+     },
+     {
+      "r": "A",
+      "en": "It may make you sleepy. Please get some rest.",
+      "vi": "Có thể gây buồn ngủ. Hãy nghỉ ngơi nhé."
+     },
+     {
+      "r": "B",
+      "en": "Thank you, doctor. Should I come back next week?",
+      "vi": "Cảm ơn bác sĩ. Tuần sau tôi có cần tái khám không?"
+     }
+    ]
+   }
+  },
+  {
+   "id": "directions",
+   "title": "Directions & Transport",
+   "icon": "🧭",
+   "group": "daily",
+   "vocab": [
+    {
+     "w": "turn left",
+     "ipa": "/tɜːn left/",
+     "vi": "rẽ trái",
+     "ex": "Turn left at the traffic light.",
+     "exvi": "Rẽ trái ở đèn giao thông."
+    },
+    {
+     "w": "straight ahead",
+     "ipa": "/streɪt əˈhed/",
+     "vi": "thẳng phía trước",
+     "ex": "Go straight ahead for two blocks.",
+     "exvi": "Đi thẳng hai dãy nhà."
+    },
+    {
+     "w": "block",
+     "ipa": "/blɒk/",
+     "vi": "dãy nhà, khu phố",
+     "ex": "It's two blocks from here.",
+     "exvi": "Cách đây hai dãy nhà."
+    },
+    {
+     "w": "intersection",
+     "ipa": "/ˌɪn.təˈsek.ʃən/",
+     "vi": "ngã tư",
+     "ex": "Turn right at the intersection.",
+     "exvi": "Rẽ phải ở ngã tư."
+    },
+    {
+     "w": "nearby",
+     "ipa": "/ˌnɪəˈbaɪ/",
+     "vi": "gần đây",
+     "ex": "Is there a bank nearby?",
+     "exvi": "Gần đây có ngân hàng không?"
+    },
+    {
+     "w": "get off",
+     "ipa": "/ɡet ɒf/",
+     "vi": "xuống (xe)",
+     "ex": "Get off at the third stop.",
+     "exvi": "Xuống ở trạm thứ ba."
+    },
+    {
+     "w": "walking distance",
+     "ipa": "/ˈwɔː.kɪŋ ˈdɪs.təns/",
+     "vi": "đi bộ được",
+     "ex": "It's within walking distance.",
+     "exvi": "Đi bộ là tới."
+    },
+    {
+     "w": "I'm lost",
+     "ipa": "/aɪm lɒst/",
+     "vi": "tôi bị lạc",
+     "ex": "Excuse me, I'm lost.",
+     "exvi": "Xin lỗi, tôi bị lạc."
+    }
+   ],
+   "dialogue": {
+    "title": "Asking for directions",
+    "roles": {
+     "A": "Tourist",
+     "B": "Local"
+    },
+    "lines": [
+     {
+      "r": "A",
+      "en": "Excuse me, I'm lost. How do I get to the train station?",
+      "vi": "Xin lỗi, tôi bị lạc. Đến ga tàu bằng cách nào?"
+     },
+     {
+      "r": "B",
+      "en": "Sure. Go straight ahead for two blocks.",
+      "vi": "Được. Đi thẳng hai dãy nhà."
+     },
+     {
+      "r": "A",
+      "en": "Okay, two blocks. And then?",
+      "vi": "Vâng, hai dãy. Rồi sao nữa?"
+     },
+     {
+      "r": "B",
+      "en": "Turn left at the intersection. You'll see a big bank.",
+      "vi": "Rẽ trái ở ngã tư. Bạn sẽ thấy một ngân hàng lớn."
+     },
+     {
+      "r": "A",
+      "en": "Is it within walking distance?",
+      "vi": "Đi bộ được không?"
+     },
+     {
+      "r": "B",
+      "en": "Yes, about ten minutes on foot.",
+      "vi": "Được, khoảng mười phút đi bộ."
+     },
+     {
+      "r": "A",
+      "en": "Is there a bus I can take instead?",
+      "vi": "Có xe buýt nào đi thay không?"
+     },
+     {
+      "r": "B",
+      "en": "Take bus 12 and get off at the third stop.",
+      "vi": "Đi xe buýt 12 và xuống ở trạm thứ ba."
+     }
+    ]
+   }
+  }
+ ]
+}

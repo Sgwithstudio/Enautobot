@@ -1,0 +1,15 @@
+[Unit]
+Description=Cloudflare Tunnel for Enautobot (en.smarc-wms.cloud -> 127.0.0.1:3470)
+After=network-online.target enautobot.service
+
+[Service]
+WorkingDirectory=/data/projects/Enautobot
+EnvironmentFile=-/data/projects/Enautobot/.env
+# Chỉ chạy khi đã dán CF_TUNNEL_TOKEN vào .env
+ExecCondition=/bin/sh -c '[ -n "$CF_TUNNEL_TOKEN" ]'
+ExecStart=/bin/sh -c 'exec /usr/local/bin/cloudflared tunnel --no-autoupdate run --token "$CF_TUNNEL_TOKEN"'
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,13 @@
+[Unit]
+Description=Enautobot English learning web app
+After=network-online.target
+
+[Service]
+WorkingDirectory=/data/projects/Enautobot
+ExecStart=/usr/bin/node server.js
+Restart=on-failure
+RestartSec=3
+Environment=PATH=/home/thi/.npm-global/bin:/usr/local/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=default.target
