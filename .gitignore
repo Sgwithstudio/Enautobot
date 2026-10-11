@@ -4,3 +4,6 @@ node_modules/
 data/cache/
 .codex-work/
 *.log
+
+# 44MB dictionary DB: fetched by scripts/get-dict.sh
+data/dict/*.db

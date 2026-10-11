@@ -1,0 +1,246 @@
+# group|level|id|icon|title
+business|beginner|biz-intro|🤝|Introducing Yourself at Work
+business|beginner|biz-office|🏢|Office Vocabulary
+business|beginner|biz-schedule|🗓️|Scheduling Appointments
+business|beginner|biz-phone-basic|📞|Basic Phone Calls
+business|beginner|biz-email-basic|✉️|Writing Simple Emails
+business|beginner|biz-coworkers|👥|Talking with Coworkers
+business|beginner|biz-lunch|🍱|Business Lunch
+business|beginner|biz-numbers|🔢|Numbers, Prices and Quantities
+business|intermediate|biz-presentation|📊|Giving a Presentation
+business|intermediate|biz-reviews|⭐|Performance Reviews
+business|intermediate|biz-project|📋|Project Management
+business|intermediate|biz-budget|💰|Budgets and Finance
+business|intermediate|biz-complaint|😠|Handling Customer Complaints
+business|intermediate|biz-logistics|🚚|Logistics and Shipping
+business|intermediate|biz-warehouse|📦|Warehouse Management
+business|intermediate|biz-import-export|🚢|Import and Export
+business|intermediate|biz-marketing|📣|Marketing Strategy
+business|intermediate|biz-onboarding|🎓|Onboarding New Employees
+business|intermediate|biz-remote|🏠|Remote Work and Online Meetings
+business|intermediate|biz-time|⏱️|Time Management
+business|intermediate|biz-brainstorm|💡|Brainstorming Ideas
+business|intermediate|biz-kpi|📈|KPIs and Reporting
+business|intermediate|biz-procurement|🛒|Procurement and Suppliers
+business|intermediate|biz-quality|✅|Quality Control
+business|intermediate|biz-customer-service|🎧|Customer Service Calls
+business|intermediate|biz-trade-show|🎪|Trade Shows and Exhibitions
+business|intermediate|biz-trip|🧳|Business Trips
+business|intermediate|biz-hosting|🍵|Hosting Foreign Visitors
+business|intermediate|biz-teamwork|🧩|Teamwork and Collaboration
+business|intermediate|biz-feedback|🗣️|Giving and Receiving Feedback
+business|intermediate|biz-resign|🚪|Resigning and Leaving a Job
+business|intermediate|biz-salary|💵|Salary and Benefits
+business|intermediate|biz-banking|🏦|Banking and Payments
+business|intermediate|biz-invoice|🧾|Invoices and Payment Terms
+business|intermediate|biz-inventory|📚|Inventory and Stock
+business|advanced|biz-contract|📜|Contract Negotiation
+business|advanced|biz-investor|🚀|Pitching to Investors
+business|advanced|biz-risk|⚠️|Risk Management
+business|advanced|biz-leadership|👑|Leadership and Motivation
+business|advanced|biz-conflict|⚖️|Conflict Resolution at Work
+business|advanced|biz-merger|🔗|Mergers and Acquisitions
+business|advanced|biz-strategy|♟️|Corporate Strategy Meeting
+business|advanced|biz-crisis|🚨|Crisis Communication
+business|advanced|biz-delegate|📤|Delegating and Managing Up
+business|advanced|biz-supplychain|⛓️|Supply Chain Disruptions
+business|advanced|biz-legal|⚖️|Legal and Compliance Terms
+business|advanced|biz-audit|🔍|Audits and Financial Reporting
+business|advanced|biz-tender|📑|Tenders and Bidding
+business|advanced|biz-diplomacy|🕊️|Diplomatic Language in Business
+business|advanced|biz-sustain|🌱|Sustainability and ESG
+business|advanced|biz-digital|🤖|Digital Transformation and AI
+business|advanced|biz-hiring|🧑‍💼|Hiring and Talent Strategy
+business|advanced|biz-restructure|🏗️|Restructuring and Layoffs
+daily|beginner|d-greetings|👋|Greetings and Introductions
+daily|beginner|d-family|👨‍👩‍👧|Family and Relatives
+daily|beginner|d-food|🍜|Food and Cooking
+daily|beginner|d-weather|⛅|Weather and Seasons
+daily|beginner|d-time|🕒|Telling Time and Dates
+daily|beginner|d-home|🏠|Rooms and Furniture
+daily|beginner|d-clothes|👕|Clothes and Fashion
+daily|beginner|d-colors|🎨|Colors, Shapes and Sizes
+daily|beginner|d-body|🦵|Body Parts and Feelings
+daily|beginner|d-transport|🚌|Public Transport
+daily|beginner|d-market|🥬|At the Market
+daily|beginner|d-hobbies|🎸|Hobbies and Free Time
+daily|beginner|d-school|🏫|School and Study
+daily|beginner|d-jobs|👷|Jobs and Occupations
+daily|beginner|d-phone|📱|Phone and Messaging
+daily|beginner|d-routine|🌅|Daily Routine
+daily|beginner|d-pets|🐶|Pets and Animals
+daily|beginner|d-city|🏙️|Around the City
+daily|beginner|d-coffee|☕|Ordering Coffee
+daily|beginner|d-sports|⚽|Sports
+daily|intermediate|d-bank|🏧|At the Bank
+daily|intermediate|d-postoffice|📮|Post Office and Parcels
+daily|intermediate|d-hotel|🏨|Hotel Check-in
+daily|intermediate|d-airport|✈️|At the Airport
+daily|intermediate|d-taxi|🚕|Taxis and Ride Apps
+daily|intermediate|d-doctor|🩺|At the Doctor
+daily|intermediate|d-pharmacy|💊|At the Pharmacy
+daily|intermediate|d-dentist|🦷|At the Dentist
+daily|intermediate|d-renting|🔑|Renting an Apartment
+daily|intermediate|d-repairs|🔧|Home Repairs
+daily|intermediate|d-gym|🏋️|At the Gym
+daily|intermediate|d-movies|🎬|Movies and Entertainment
+daily|intermediate|d-music|🎵|Music and Concerts
+daily|intermediate|d-books|📖|Books and Reading
+daily|intermediate|d-party|🎉|Parties and Celebrations
+daily|intermediate|d-wedding|💒|Weddings and Traditions
+daily|intermediate|d-dating|💕|Dating and Relationships
+daily|intermediate|d-friends|🧑‍🤝‍🧑|Making and Keeping Friends
+daily|intermediate|d-neighbors|🏘️|Talking with Neighbors
+daily|intermediate|d-complaints|📢|Making Complaints in Shops
+daily|intermediate|d-returns|↩️|Returns and Refunds
+daily|intermediate|d-online-shop|🛍️|Online Shopping
+daily|intermediate|d-social-media|📲|Social Media
+daily|intermediate|d-tech-help|💻|Computer and Tech Problems
+daily|intermediate|d-cooking|👩‍🍳|Cooking and Recipes
+daily|intermediate|d-eating-out|🍽️|Eating Out and Reservations
+daily|intermediate|d-driving|🚗|Driving and Car Trouble
+daily|intermediate|d-emergency|🚑|Emergencies
+daily|intermediate|d-police|👮|Reporting to the Police
+daily|intermediate|d-haircut|💇|Hair Salon and Beauty
+daily|intermediate|d-laundry|🧺|Laundry and Dry Cleaning
+daily|intermediate|d-weekend|🏞️|Weekend Plans
+daily|intermediate|d-invitations|💌|Invitations and Excuses
+daily|intermediate|d-apology|🙏|Apologies and Forgiveness
+daily|intermediate|d-compliments|😊|Compliments and Thanks
+daily|intermediate|d-opinions|💭|Giving Opinions
+daily|intermediate|d-advice|🧭|Asking for and Giving Advice
+daily|intermediate|d-money|💳|Money and Everyday Spending
+daily|intermediate|d-insurance|🛡️|Insurance
+daily|intermediate|d-volunteering|🤲|Volunteering and Charity
+travel|beginner|t-ticket|🎫|Buying Tickets
+travel|beginner|t-directions2|🧭|Asking for Directions Abroad
+travel|beginner|t-hotel-booking|🛎️|Booking a Hotel
+travel|beginner|t-sightseeing|🗼|Sightseeing
+travel|beginner|t-souvenir|🎁|Buying Souvenirs
+travel|intermediate|t-immigration|🛂|Immigration and Customs
+travel|intermediate|t-carrental|🚙|Renting a Car
+travel|intermediate|t-train|🚆|Train and Bus Travel
+travel|intermediate|t-lost|🧳|Lost Luggage and Lost Items
+travel|intermediate|t-tour|🗺️|Joining a Guided Tour
+travel|intermediate|t-beach|🏖️|Beach and Resort Holidays
+travel|intermediate|t-camping|⛺|Camping and Hiking
+travel|intermediate|t-visa|🪪|Visas and Travel Documents
+travel|intermediate|t-roadtrip|🛣️|Road Trips
+travel|intermediate|t-airbnb|🛏️|Homestays and Airbnb
+travel|intermediate|t-food-abroad|🥘|Trying Local Food Abroad
+travel|intermediate|t-delay|⏳|Flight Delays and Cancellations
+travel|advanced|t-culture|🌍|Culture Shock and Customs
+travel|advanced|t-expat|🧑‍✈️|Living Abroad as an Expat
+travel|advanced|t-travel-stories|📸|Telling Travel Stories
+travel|advanced|t-eco|🌿|Eco-tourism and Responsible Travel
+health|beginner|h-symptoms|🤒|Describing Symptoms
+health|intermediate|h-diet|🥗|Diet and Nutrition
+health|intermediate|h-fitness|🏃|Fitness Plans
+health|intermediate|h-mental|🧠|Stress and Mental Health
+health|intermediate|h-sleep|😴|Sleep Habits
+health|intermediate|h-hospital|🏥|Hospital Visits
+health|advanced|h-chronic|💉|Chronic Illness and Treatment
+health|advanced|h-policy|🩻|Healthcare Systems
+tech|beginner|tech-devices|🖥️|Devices and Gadgets
+tech|intermediate|tech-internet|🌐|Internet and Wi-Fi
+tech|intermediate|tech-software|🧰|Software and Apps
+tech|intermediate|tech-it-support|🛠️|IT Support
+tech|intermediate|tech-security|🔐|Passwords and Online Safety
+tech|intermediate|tech-coding|👨‍💻|Programming Basics
+tech|advanced|tech-ai|🧠|Artificial Intelligence
+tech|advanced|tech-cloud|☁️|Cloud and Data
+tech|advanced|tech-startup|🦄|Startup and Product Development
+tech|advanced|tech-cyber|🛡️|Cybersecurity Incidents
+academic|intermediate|ac-lecture|🎓|Understanding a Lecture
+academic|intermediate|ac-study-abroad|🛫|Studying Abroad
+academic|intermediate|ac-group-project|📚|Group Projects
+academic|intermediate|ac-exam|📝|Exams and Test Prep
+academic|intermediate|ac-library|🏛️|Library and Research
+academic|intermediate|ac-ielts-speaking1|🗣️|IELTS Speaking Part 1
+academic|intermediate|ac-ielts-speaking2|🎤|IELTS Speaking Part 2
+academic|advanced|ac-ielts-speaking3|💬|IELTS Speaking Part 3
+academic|advanced|ac-essay|✍️|Academic Essay Language
+academic|advanced|ac-describe-graph|📉|Describing Graphs and Trends
+academic|advanced|ac-debate|🎙️|Debating and Persuading
+academic|advanced|ac-seminar|🧑‍🏫|Seminars and Discussions
+academic|advanced|ac-research|🔬|Research and Methodology
+academic|advanced|ac-scholarship|🏅|Scholarship Interviews
+society|intermediate|s-environment|🌎|Environment and Climate
+society|intermediate|s-news|📰|Talking About the News
+society|intermediate|s-education|🏫|Education Systems
+society|intermediate|s-traditions|🏮|Vietnamese Culture and Festivals
+society|intermediate|s-city-life|🌆|City Life vs Countryside
+society|advanced|s-economy|📊|Economy and Inflation
+society|advanced|s-politics|🏛️|Government and Politics
+society|advanced|s-globalization|🌐|Globalization
+society|advanced|s-ethics|🧭|Ethics and Moral Dilemmas
+society|advanced|s-media|📺|Media and Fake News
+society|advanced|s-gender|⚧️|Equality and Diversity
+society|advanced|s-aging|👵|Ageing Society
+society|advanced|s-urban|🏗️|Urbanization and Housing
+society|advanced|s-work-life|⚖️|Work-Life Balance
+society|advanced|s-consumer|🛒|Consumerism
+society|advanced|s-art|🖼️|Art and Creativity
+society|advanced|s-history|🏺|History and Heritage
+idioms|intermediate|i-money|💸|Idioms about Money
+idioms|intermediate|i-work|💼|Idioms about Work
+idioms|intermediate|i-time|⌛|Idioms about Time
+idioms|intermediate|i-feelings|😬|Idioms about Feelings
+idioms|intermediate|i-food|🍰|Idioms with Food
+idioms|intermediate|i-animals|🐾|Idioms with Animals
+idioms|intermediate|i-weather|🌧️|Idioms with Weather
+idioms|intermediate|i-body|👀|Idioms with Body Parts
+idioms|intermediate|i-colors|🌈|Idioms with Colors
+idioms|advanced|i-success|🏆|Idioms about Success and Failure
+idioms|advanced|i-communication|💬|Idioms about Communication
+idioms|advanced|i-relationships|🫂|Idioms about Relationships
+idioms|advanced|i-problems|🧩|Idioms about Problems and Solutions
+idioms|advanced|i-opinions|⚖️|Idioms for Agreeing and Disagreeing
+idioms|advanced|i-business|📈|Business Idioms
+idioms|advanced|i-sports|🏀|Sports Idioms in Everyday English
+idioms|advanced|i-proverbs|📜|Common English Proverbs
+phrasal|beginner|p-get|🔄|Phrasal Verbs with Get
+phrasal|beginner|p-go|➡️|Phrasal Verbs with Go
+phrasal|beginner|p-take|🫴|Phrasal Verbs with Take
+phrasal|beginner|p-put|📥|Phrasal Verbs with Put
+phrasal|intermediate|p-make-do|🛠️|Phrasal Verbs with Make and Do
+phrasal|intermediate|p-come|🚶|Phrasal Verbs with Come
+phrasal|intermediate|p-look|👁️|Phrasal Verbs with Look
+phrasal|intermediate|p-work|⚙️|Phrasal Verbs for Work
+phrasal|intermediate|p-travel|🧳|Phrasal Verbs for Travel
+phrasal|intermediate|p-relationships|💞|Phrasal Verbs for Relationships
+phrasal|intermediate|p-tech|🔌|Phrasal Verbs for Technology
+phrasal|advanced|p-break-turn|💥|Phrasal Verbs with Break and Turn
+phrasal|advanced|p-run-set|🏃|Phrasal Verbs with Run and Set
+phrasal|advanced|p-formal|🎩|Formal Alternatives to Phrasal Verbs
+phrasal|advanced|p-business|📎|Business Phrasal Verbs
+grammar|beginner|g-present|⏺️|Present Simple in Conversation
+grammar|beginner|g-past|⏪|Talking About the Past
+grammar|beginner|g-future|⏩|Plans and the Future
+grammar|beginner|g-questions|❓|Asking Questions Naturally
+grammar|beginner|g-polite|🎩|Polite Requests
+grammar|beginner|g-preps|📍|Prepositions of Place and Time
+grammar|intermediate|g-present-perfect|✔️|Present Perfect in Real Life
+grammar|intermediate|g-conditionals|🔀|Conditionals: If I Were You
+grammar|intermediate|g-modals|🧱|Modal Verbs for Advice and Possibility
+grammar|intermediate|g-passive|🔁|Passive Voice in Reports
+grammar|intermediate|g-reported|🗨️|Reported Speech
+grammar|intermediate|g-comparisons|⚖️|Comparing Things
+grammar|intermediate|g-linking|🔗|Linking Words and Connectors
+grammar|intermediate|g-gerunds|📐|Gerunds and Infinitives
+grammar|advanced|g-wish|🌠|Wishes and Regrets
+grammar|advanced|g-inversion|🔃|Inversion and Emphasis
+grammar|advanced|g-hedging|🌫️|Hedging and Softening Language
+grammar|advanced|g-collocations|🧲|Powerful Collocations
+speaking|beginner|sp-pronunciation|👄|Pronunciation Basics
+speaking|beginner|sp-stress|🔊|Word Stress and Rhythm
+speaking|intermediate|sp-minimal-pairs|🎯|Minimal Pairs Practice
+speaking|intermediate|sp-intonation|📈|Intonation in Questions
+speaking|intermediate|sp-fillers|🤔|Natural Fillers and Pauses
+speaking|intermediate|sp-clarify|🙋|Asking for Clarification
+speaking|intermediate|sp-storytelling|📖|Telling a Story
+speaking|advanced|sp-linking|🔗|Connected Speech and Linking
+speaking|advanced|sp-persuade|🎯|Persuasive Speaking
+speaking|advanced|sp-humor|😄|Humor and Sarcasm
+speaking|advanced|sp-formal-informal|👔|Formal vs Informal Register
+speaking|advanced|sp-impromptu|⚡|Impromptu Speaking

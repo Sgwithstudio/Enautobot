@@ -5,6 +5,7 @@ const crypto = require('crypto');
 const env = require('./lib/env');
 const codex = require('./lib/codex');
 const tts = require('./lib/tts');
+const dict = require('./lib/dict');
 
 const PORT = parseInt(env.PORT || '3470', 10);
 const HOST = env.HOST || '127.0.0.1';
@@ -88,6 +89,11 @@ async function api(req, res, url) {
 
   if (p === '/api/voices') return json(res, 200, tts.VOICES);
   if (p === '/api/lessons') return json(res, 200, seed);
+  if (p === '/api/dict') {
+    const r = dict.lookup(url.searchParams.get('q'));
+    return r ? json(res, 200, r) : json(res, 503, { error: 'Chưa có dữ liệu từ điển (chạy scripts/get-dict.sh)' });
+  }
+  if (p === '/api/dict/suggest') return json(res, 200, dict.suggest(url.searchParams.get('q'), 12));
   if (p === '/api/tts') {
     try {
       const f = await tts.synth(url.searchParams.get('text'), url.searchParams.get('voice'), url.searchParams.get('rate'));

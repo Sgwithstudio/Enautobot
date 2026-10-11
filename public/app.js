@@ -1,6 +1,6 @@
 'use strict';
 const $app = document.getElementById('app');
-const S = { lessons: [], voices: [], tab: 'learn', topic: null, mode: 'vocab', level: 'intermediate' };
+const S = { lessons: [], voices: [], tab: 'learn', topic: null, mode: 'vocab', level: 'intermediate', cat: 'all', lvf: 'all', q: '', dq: '' };
 const store = {
   get(k, d) { try { const v = localStorage.getItem('eb_' + k); return v ? JSON.parse(v) : d; } catch { return d; } },
   set(k, v) { try { localStorage.setItem('eb_' + k, JSON.stringify(v)); } catch {} },
@@ -64,7 +64,7 @@ function scoreHtml(target, said) {
 /* ---------- layout ---------- */
 function shell(title, body, { back } = {}) {
   $app.innerHTML = `<header>${back ? '<button class="back" id="back">‹ Quay lại</button>' : ''}<h1>${esc(title)}</h1></header><main id="main">${body}</main>
-  <nav>${[['learn', '📚', 'Học'], ['talk', '🎙️', 'Nói'], ['set', '⚙️', 'Giọng']].map(([k, i, l]) => `<button data-tab="${k}" class="${S.tab === k && !back ? 'on' : S.tab === k ? 'on' : ''}"><span>${i}</span>${l}</button>`).join('')}</nav>`;
+  <nav>${[['learn', '📚', 'Học'], ['dict', '📖', 'Từ điển'], ['talk', '🎙️', 'Nói'], ['set', '⚙️', 'Giọng']].map(([k, i, l]) => `<button data-tab="${k}" class="${S.tab === k && !back ? 'on' : S.tab === k ? 'on' : ''}"><span>${i}</span>${l}</button>`).join('')}</nav>`;
   $app.querySelectorAll('nav button').forEach(b => b.onclick = () => { stopSpeak(); S.tab = b.dataset.tab; S.topic = null; route(); });
   if (back) document.getElementById('back').onclick = back;
 }
@@ -86,13 +86,40 @@ function renderLogin(msg) {
 }
 
 /* ---------- learn ---------- */
+const CATS = [['all', 'Tất cả'], ['business', '💼 Kinh doanh'], ['daily', '🏠 Hằng ngày'], ['travel', '✈️ Du lịch'], ['health', '🩺 Sức khỏe'], ['tech', '💻 Công nghệ'], ['academic', '🎓 Học thuật'], ['society', '🌍 Xã hội'], ['idioms', '💬 Thành ngữ'], ['phrasal', '🔗 Cụm động từ'], ['grammar', '📐 Ngữ pháp'], ['speaking', '👄 Phát âm & nói']];
+const LVF = [['all', 'Mọi trình độ'], ['beginner', 'Cơ bản'], ['intermediate', 'Trung cấp'], ['advanced', 'Nâng cao']];
+const LV_BADGE = { beginner: 'A2', intermediate: 'B1-B2', advanced: 'C1' };
+const lessonDone = t => t.vocab.length && t.vocab.every(v => known.has(t.id + ':' + v.w));
+const lessonKnown = t => t.vocab.filter(v => known.has(t.id + ':' + v.w)).length;
+function filteredLessons() {
+  const q = S.q.trim().toLowerCase();
+  return S.lessons.filter(t => (S.cat === 'all' || t.group === S.cat) && (S.lvf === 'all' || (t.level || 'intermediate') === S.lvf)
+    && (!q || t.title.toLowerCase().includes(q) || t.vocab.some(v => v.w.toLowerCase().includes(q))));
+}
+function drawTopics() {
+  const list = filteredLessons(), box = document.getElementById('tl');
+  document.getElementById('cnt').textContent = `${list.length} / ${S.lessons.length} bài`;
+  box.innerHTML = list.length ? list.map(t => {
+    const k = lessonKnown(t);
+    return `<button class="topic" data-id="${t.id}"><b>${t.icon}</b>${esc(t.title)}<span class="meta">${LV_BADGE[t.level || 'intermediate']}${k ? ` · ${lessonDone(t) ? '✓' : k + '/' + t.vocab.length}` : ''}</span></button>`;
+  }).join('') : '<p class="muted">Không tìm thấy bài nào.</p>';
+  box.querySelectorAll('.topic').forEach(b => b.onclick = () => { S.topic = S.lessons.find(t => t.id === b.dataset.id); S.mode = 'vocab'; S.scroll = document.getElementById('main').scrollTop; route(); });
+}
 function renderLearn() {
-  const group = g => S.lessons.filter(t => t.group === g).map(t => `<button class="topic" data-id="${t.id}"><b>${t.icon}</b>${esc(t.title)}</button>`).join('');
-  shell('Học tiếng Anh', `<h2>Kinh doanh</h2><div class="grid">${group('business')}</div><h2>Hằng ngày</h2><div class="grid">${group('daily')}</div>
+  const done = S.lessons.filter(lessonDone).length;
+  shell('Học tiếng Anh', `<p class="muted">${S.lessons.length} bài · đã thuộc ${done} bài · ${known.size} từ</p>
+  <input id="sq" type="search" placeholder="🔎 Tìm bài hoặc từ vựng..." value="${esc(S.q)}">
+  <div class="chips scroll" id="cf">${CATS.map(([k, l]) => `<button class="chip ${S.cat === k ? 'on' : ''}" data-c="${k}">${l}</button>`).join('')}</div>
+  <div class="chips scroll" id="lf">${LVF.map(([k, l]) => `<button class="chip ${S.lvf === k ? 'on' : ''}" data-l="${k}">${l}</button>`).join('')}</div>
+  <h2 id="cnt"></h2><div class="grid" id="tl"></div>
   <h2>Tạo bài mới bằng AI</h2><div class="card"><input id="gt" placeholder="Chủ đề, vd: hỏi lương, đặt phòng khách sạn"><div class="chips" id="gl">${lvChips()}</div>
   <div class="chips" id="gg"><button class="chip on" data-g="business">Kinh doanh</button><button class="chip" data-g="daily">Hằng ngày</button></div>
   <button class="btn full" id="gen">✨ Tạo bài (mất ~30 giây)</button><p class="muted" id="gs"></p></div>`);
-  $app.querySelectorAll('.topic').forEach(b => b.onclick = () => { S.topic = S.lessons.find(t => t.id === b.dataset.id); S.mode = 'vocab'; route(); });
+  drawTopics();
+  if (S.scroll) { document.getElementById('main').scrollTop = S.scroll; S.scroll = 0; }
+  document.getElementById('sq').oninput = e => { S.q = e.target.value; drawTopics(); };
+  const bindF = (id, attr, key) => $app.querySelectorAll(`#${id} .chip`).forEach(c => c.onclick = () => { S[key] = c.dataset[attr]; $app.querySelectorAll(`#${id} .chip`).forEach(x => x.classList.toggle('on', x === c)); drawTopics(); });
+  bindF('cf', 'c', 'cat'); bindF('lf', 'l', 'lvf');
   bindLv('gl');
   let grp = 'business';
   $app.querySelectorAll('#gg .chip').forEach(c => c.onclick = () => { grp = c.dataset.g; $app.querySelectorAll('#gg .chip').forEach(x => x.classList.toggle('on', x === c)); });
@@ -111,16 +138,21 @@ function bindLv(id) { const box = document.getElementById(id); box.querySelector
 
 function renderTopic() {
   const t = S.topic;
-  shell(`${t.icon} ${t.title}`, `<div class="tabs"><button data-m="vocab" class="${S.mode === 'vocab' ? 'on' : ''}">Từ vựng</button><button data-m="dlg" class="${S.mode === 'dlg' ? 'on' : ''}">Hội thoại</button></div><div id="body"></div>`, { back: () => { stopSpeak(); S.topic = null; route(); } });
+  shell(`${t.icon} ${t.title}${t.level ? ' · ' + LV_BADGE[t.level] : ''}`, `<div class="tabs"><button data-m="vocab" class="${S.mode === 'vocab' ? 'on' : ''}">Từ vựng</button><button data-m="dlg" class="${S.mode === 'dlg' ? 'on' : ''}">Hội thoại</button></div><div id="body"></div>`, { back: () => { stopSpeak(); S.topic = null; route(); } });
   $app.querySelectorAll('.tabs button').forEach(b => b.onclick = () => { stopSpeak(); S.mode = b.dataset.m; renderTopic(); });
   S.mode === 'vocab' ? renderVocab() : renderDialogue();
 }
 function renderVocab() {
   const t = S.topic, body = document.getElementById('body');
-  body.innerHTML = t.vocab.map((v, i) => `<div class="card"><div class="row"><div style="flex:1"><div class="word">${esc(v.w)}</div><div class="ipa">${esc(v.ipa)}</div><div class="vi">${esc(v.vi)}</div></div>
+  body.innerHTML = t.vocab.map((v, i) => `<div class="card"><div class="row"><div style="flex:1"><div class="word" data-d="${i}">${esc(v.w)} <small>📖</small></div><div class="ipa">${esc(v.ipa)}</div><div class="vi">${esc(v.vi)}</div></div>
   <button class="icon" data-w="${i}">🔊</button></div><div class="row" style="margin-top:8px"><div class="ex" style="flex:1">“${esc(v.ex)}”${cfg.vi ? `<div class="muted">${esc(v.exvi)}</div>` : ''}</div><button class="icon" data-e="${i}">▶️</button></div>
   <div class="row" style="margin-top:8px"><button class="chip" data-m="${i}">🎤 Nhại câu</button><button class="chip ${known.has(t.id + ':' + v.w) ? 'on' : ''}" data-k="${i}">${known.has(t.id + ':' + v.w) ? '✓ Đã thuộc' : 'Đánh dấu thuộc'}</button></div><div id="sc${i}"></div></div>`).join('');
+  body.querySelectorAll('[data-d]').forEach(b => b.onclick = () => openDict(t.vocab[b.dataset.d].w));
   body.querySelectorAll('[data-w]').forEach(b => b.onclick = () => speak(t.vocab[b.dataset.w].w, cfg.vA));
+  if (t.phrases && t.phrases.length) {
+    body.insertAdjacentHTML('beforeend', `<h2>Mẫu câu hữu ích</h2>` + t.phrases.map((p, i) => `<div class="card"><div class="row"><div style="flex:1" class="ex"><b>${esc(p.en)}</b>${cfg.vi ? `<div class="vi">${esc(p.vi)}</div>` : ''}</div><button class="icon" data-ph="${i}">🔊</button></div></div>`).join(''));
+    body.querySelectorAll('[data-ph]').forEach(b => b.onclick = () => speak(t.phrases[b.dataset.ph].en, cfg.vA));
+  }
   body.querySelectorAll('[data-e]').forEach(b => b.onclick = () => speak(t.vocab[b.dataset.e].ex, cfg.vA));
   body.querySelectorAll('[data-k]').forEach(b => b.onclick = () => {
     const k = t.id + ':' + t.vocab[b.dataset.k].w; known.has(k) ? known.delete(k) : known.add(k); store.set('known', [...known]); renderVocab();
@@ -159,6 +191,55 @@ function renderDialogue() {
   }
   document.getElementById('pa').onclick = () => play(false);
   document.getElementById('rp').onclick = () => play(true);
+}
+
+
+/* ---------- dictionary ---------- */
+function dictHtml(r) {
+  if (!r.found) return `<div class="muted">Không tìm thấy “${esc(r.word)}”. Thử từ gốc (vd: run thay vì running) hoặc kiểm tra chính tả.</div>`;
+  const ipa = r.ipa.length ? r.ipa[0].ipa : '';
+  const byPos = {};
+  r.defs.forEach(d => (byPos[d.pos || '—'] = byPos[d.pos || '—'] || []).push(d));
+  return `<div class="row"><div style="flex:1"><div class="word">${esc(r.word)}</div><div class="ipa">${esc(r.ipa.map(p => p.ipa + (p.region ? ' (' + p.region + ')' : '')).join('  '))}</div></div>
+  <button class="icon" data-say="${esc(r.word)}">🔊</button></div>` + Object.entries(byPos).map(([pos, ds]) =>
+    `<h2>${esc(pos)}</h2>` + ds.map(d => `<div class="def"><div class="vi">${esc(d.vi)}</div>${d.ex ? `<div class="ex">“${esc(d.ex)}” <button class="mini" data-say="${esc(d.ex)}">▶️</button></div>` : ''}</div>`).join('')).join('');
+}
+function bindSay(root) { root.querySelectorAll('[data-say]').forEach(b => b.onclick = () => speak(b.dataset.say, cfg.vA)); }
+async function openDict(word) {
+  const sh = document.createElement('div'); sh.className = 'sheet';
+  sh.innerHTML = `<div class="sheet-in"><button class="chip" id="sx" style="float:right">✕ Đóng</button><div id="sb"><span class="dots">Đang tra</span></div></div>`;
+  document.body.appendChild(sh);
+  sh.onclick = e => { if (e.target === sh) sh.remove(); };
+  sh.querySelector('#sx').onclick = () => sh.remove();
+  try { const r = await api('/api/dict?q=' + encodeURIComponent(word)); const sb = sh.querySelector('#sb'); sb.innerHTML = dictHtml(r); bindSay(sb); }
+  catch (e) { sh.querySelector('#sb').textContent = '⚠️ ' + e.message; }
+}
+let dictTimer = 0;
+function renderDict() {
+  const hist = store.get('dhist', []);
+  shell('Từ điển Anh – Việt', `<input id="dq" type="search" placeholder="Nhập từ hoặc cụm từ tiếng Anh..." value="${esc(S.dq)}" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false">
+  <div class="chips scroll" id="dsug"></div><div id="dres"></div>
+  <p class="muted" style="margin-top:20px">Dữ liệu: ~105.000 từ & cụm từ, có phiên âm và ví dụ. CC BY-SA 4.0 (MinhQND, Wiktionary…).</p>`);
+  const res = document.getElementById('dres'), sug = document.getElementById('dsug'), inp = document.getElementById('dq');
+  const showHist = () => { res.innerHTML = hist.length ? `<h2>Đã tra gần đây</h2><div class="chips">${hist.map(h => `<button class="chip" data-h="${esc(h)}">${esc(h)}</button>`).join('')}</div>` : ''; res.querySelectorAll('[data-h]').forEach(b => b.onclick = () => look(b.dataset.h)); };
+  async function look(w) {
+    w = w.trim(); if (!w) return;
+    inp.value = S.dq = w; sug.innerHTML = ''; res.innerHTML = '<span class="dots">Đang tra</span>';
+    try {
+      const r = await api('/api/dict?q=' + encodeURIComponent(w));
+      res.innerHTML = dictHtml(r); bindSay(res);
+      if (r.found) { const h = [r.word, ...hist.filter(x => x !== r.word)].slice(0, 20); store.set('dhist', h); hist.splice(0, hist.length, ...h); }
+    } catch (e) { res.textContent = '⚠️ ' + e.message; }
+  }
+  inp.oninput = () => {
+    S.dq = inp.value; clearTimeout(dictTimer);
+    if (!inp.value.trim()) { sug.innerHTML = ''; return showHist(); }
+    dictTimer = setTimeout(async () => {
+      try { const l = await api('/api/dict/suggest?q=' + encodeURIComponent(inp.value)); sug.innerHTML = l.map(w => `<button class="chip" data-s="${esc(w)}">${esc(w)}</button>`).join(''); sug.querySelectorAll('[data-s]').forEach(b => b.onclick = () => look(b.dataset.s)); } catch {}
+    }, 150);
+  };
+  inp.onkeydown = e => { if (e.key === 'Enter') { inp.blur(); look(inp.value); } };
+  S.dq ? look(S.dq) : showHist();
 }
 
 /* ---------- talk (AI chat) ---------- */
@@ -229,6 +310,7 @@ function renderSettings() {
 
 function route() {
   if (S.tab === 'learn') S.topic ? renderTopic() : renderLearn();
+  else if (S.tab === 'dict') renderDict();
   else if (S.tab === 'talk') renderTalk();
   else renderSettings();
 }
