@@ -1,6 +1,6 @@
 'use strict';
 const $app = document.getElementById('app');
-const S = { lessons: [], voices: [], tab: 'learn', topic: null, mode: 'vocab', level: 'intermediate', cat: 'all', lvf: 'all', q: '', dq: '' };
+const S = { lessons: [], voices: [], tab: 'learn', topic: null, mode: 'vocab', level: 'intermediate', cat: 'all', lvf: 'all', q: '', dq: '', dmode: 'en', ptab: 'link', lt: '' };
 const store = {
   get(k, d) { try { const v = localStorage.getItem('eb_' + k); return v ? JSON.parse(v) : d; } catch { return d; } },
   set(k, v) { try { localStorage.setItem('eb_' + k, JSON.stringify(v)); } catch {} },
@@ -64,7 +64,7 @@ function scoreHtml(target, said) {
 /* ---------- layout ---------- */
 function shell(title, body, { back } = {}) {
   $app.innerHTML = `<header>${back ? '<button class="back" id="back">‹ Quay lại</button>' : ''}<h1>${esc(title)}</h1></header><main id="main">${body}</main>
-  <nav>${[['learn', '📚', 'Học'], ['dict', '📖', 'Từ điển'], ['talk', '🎙️', 'Nói'], ['set', '⚙️', 'Giọng']].map(([k, i, l]) => `<button data-tab="${k}" class="${S.tab === k && !back ? 'on' : S.tab === k ? 'on' : ''}"><span>${i}</span>${l}</button>`).join('')}</nav>`;
+  <nav>${[['learn', '📚', 'Học'], ['dict', '📖', 'Từ điển'], ['pron', '👄', 'Phát âm'], ['talk', '🎙️', 'Nói'], ['set', '⚙️', 'Giọng']].map(([k, i, l]) => `<button data-tab="${k}" class="${S.tab === k && !back ? 'on' : S.tab === k ? 'on' : ''}"><span>${i}</span>${l}</button>`).join('')}</nav>`;
   $app.querySelectorAll('nav button').forEach(b => b.onclick = () => { stopSpeak(); S.tab = b.dataset.tab; S.topic = null; route(); });
   if (back) document.getElementById('back').onclick = back;
 }
@@ -195,51 +195,143 @@ function renderDialogue() {
 
 
 /* ---------- dictionary ---------- */
-function dictHtml(r) {
-  if (!r.found) return `<div class="muted">Không tìm thấy “${esc(r.word)}”. Thử từ gốc (vd: run thay vì running) hoặc kiểm tra chính tả.</div>`;
-  const ipa = r.ipa.length ? r.ipa[0].ipa : '';
-  const byPos = {};
-  r.defs.forEach(d => (byPos[d.pos || '—'] = byPos[d.pos || '—'] || []).push(d));
-  return `<div class="row"><div style="flex:1"><div class="word">${esc(r.word)}</div><div class="ipa">${esc(r.ipa.map(p => p.ipa + (p.region ? ' (' + p.region + ')' : '')).join('  '))}</div></div>
-  <button class="icon" data-say="${esc(r.word)}">🔊</button></div>` + Object.entries(byPos).map(([pos, ds]) =>
-    `<h2>${esc(pos)}</h2>` + ds.map(d => `<div class="def"><div class="vi">${esc(d.vi)}</div>${d.ex ? `<div class="ex">“${esc(d.ex)}” <button class="mini" data-say="${esc(d.ex)}">▶️</button></div>` : ''}</div>`).join('')).join('');
+const sayBtn = t => `<button class="mini" data-say="${esc(t)}">🔊</button>`;
+function pronHtml(r) {
+  const p = r.pron; if (!p) return '';
+  return `<details class="pron"><summary>🗣️ Hướng dẫn phát âm</summary>
+  ${p.tips.map(t => `<p class="tip">• ${esc(t)}</p>`).join('')}
+  ${p.sounds.length ? `<h2>Các âm trong từ</h2>` + p.sounds.map(x => `<div class="snd"><b class="ipa-chip">/${esc(x.p)}/</b> <b>${esc(x.name)}</b><div class="muted">${esc(x.how)}</div>${x.eg ? `<div class="muted">VD: ${esc(x.eg)}</div>` : ''}</div>`).join('') : ''}</details>`;
 }
-function bindSay(root) { root.querySelectorAll('[data-say]').forEach(b => b.onclick = () => speak(b.dataset.say, cfg.vA)); }
-async function openDict(word) {
+function defsHtml(defs) {
+  const byPos = {};
+  defs.forEach(d => (byPos[d.pos || '—'] = byPos[d.pos || '—'] || []).push(d));
+  return Object.entries(byPos).map(([pos, ds]) => `<h2>${esc(pos)}</h2>` + ds.map(d => `<div class="def">${d.vi ? `<div class="vi">${esc(d.vi)}</div>` : ''}${d.en ? `<div class="en">${esc(d.en)}</div>` : ''}${d.ex ? `<div class="ex">“${esc(d.ex)}” ${sayBtn(d.ex)}</div>` : ''}</div>`).join('')).join('');
+}
+function dictHtml(r) {
+  if (!r.found) return `<div class="muted">Không tìm thấy “${esc(r.word)}”. Kiểm tra chính tả hoặc thử từ gốc (vd: run thay vì running).</div>`;
+  return `<div class="row"><div style="flex:1"><div class="word">${esc(r.word)}</div>
+  ${r.ipa.map(p => `<div class="ipa">${esc(p.ipa)}${p.region ? ' · ' + esc(p.region) : ''} <span class="say">≈ ${esc(p.say || '')}</span></div>`).join('')}</div>
+  <button class="icon" data-say="${esc(r.word)}">🔊</button></div>
+  ${r.tr && r.tr.length ? `<div class="vi" style="margin-top:6px">🇻🇳 ${esc(r.tr.join(' · '))}</div>` : ''}
+  ${pronHtml(r)}
+  ${r.base ? `<p class="muted">Dạng biến đổi của <a href="#" data-go="${esc(r.base)}">${esc(r.base)}</a></p>` : ''}
+  ${defsHtml(r.defs)}
+  ${r.baseDefs ? `<h2>Nghĩa của “${esc(r.baseWord)}”</h2>` + defsHtml(r.baseDefs) : ''}
+  ${r.needVi ? `<div class="card"><button class="btn full" data-ai="${esc(r.word)}">🇻🇳 Dịch nghĩa sang tiếng Việt (AI)</button><div id="ai-out"></div></div>` : ''}`;
+}
+function viHtml(r) {
+  if (!r.found) return `<div class="muted">Không tìm thấy “${esc(r.query)}”. Thử gõ không dấu hoặc từ ngắn hơn.</div>`;
+  return (r.fuzzy ? '<p class="muted">Không có kết quả chính xác — các từ gần giống:</p>' : '') + r.rows.map(row => `<div class="card">
+  <div class="row"><div style="flex:1"><div class="word">${esc(row.word)}</div>${row.ipa ? `<div class="ipa">${esc(row.ipa)}</div>` : ''}</div></div>
+  ${(row.m || []).length ? `<h2>Tiếng Anh tương ứng</h2>` + row.m.map(m => `<div class="vm"><div style="flex:1"><a href="#" class="enw" data-en="${esc(m.e)}">${esc(m.e)}</a> <span class="muted">${esc(m.p ? (m.p) : '')}</span>${m.g ? `<div class="muted">${esc(m.g)}</div>` : ''}
+    ${m.ipa ? `<div class="ipa">${esc(m.ipa)} <span class="say">≈ ${esc(m.say || '')}</span></div>` : ''}</div>${sayBtn(m.e)}</div>`).join('') : ''}
+  ${(row.d || []).map(d => `<div class="def"><span class="muted">${esc(d.p)}</span> ${d.g.map(g => `<div class="en">${esc(g)}</div>`).join('')}</div>`).join('')}</div>`).join('');
+}
+function bindDict(root, goEn) {
+  root.querySelectorAll('[data-say]').forEach(b => b.onclick = () => speak(b.dataset.say, cfg.vA));
+  root.querySelectorAll('[data-go]').forEach(b => b.onclick = e => { e.preventDefault(); goEn(b.dataset.go); });
+  root.querySelectorAll('[data-en]').forEach(b => b.onclick = e => { e.preventDefault(); goEn(b.dataset.en); });
+  root.querySelectorAll('[data-ai]').forEach(b => b.onclick = async () => {
+    const out = root.querySelector('#ai-out'); b.disabled = true; out.innerHTML = '<span class="dots">AI đang dịch</span>';
+    try {
+      const r = await api('/api/dict/translate?q=' + encodeURIComponent(b.dataset.ai));
+      out.innerHTML = (r.vi || []).map(v => `<div class="def"><div class="vi">${esc(v)}</div></div>`).join('') + (r.ex ? `<div class="ex">“${esc(r.ex)}” ${sayBtn(r.ex)}<div class="muted">${esc(r.exvi || '')}</div></div>` : '');
+      bindDict(out, goEn);
+    } catch (e) { out.textContent = '⚠️ ' + e.message; b.disabled = false; }
+  });
+}
+function openDict(word) {
   const sh = document.createElement('div'); sh.className = 'sheet';
   sh.innerHTML = `<div class="sheet-in"><button class="chip" id="sx" style="float:right">✕ Đóng</button><div id="sb"><span class="dots">Đang tra</span></div></div>`;
   document.body.appendChild(sh);
   sh.onclick = e => { if (e.target === sh) sh.remove(); };
   sh.querySelector('#sx').onclick = () => sh.remove();
-  try { const r = await api('/api/dict?q=' + encodeURIComponent(word)); const sb = sh.querySelector('#sb'); sb.innerHTML = dictHtml(r); bindSay(sb); }
-  catch (e) { sh.querySelector('#sb').textContent = '⚠️ ' + e.message; }
+  const go = async w => {
+    const sb = sh.querySelector('#sb');
+    try { const r = await api('/api/dict?q=' + encodeURIComponent(w)); sb.innerHTML = dictHtml(r); bindDict(sb, go); }
+    catch (e) { sb.textContent = '⚠️ ' + e.message; }
+  };
+  go(word);
 }
 let dictTimer = 0;
 function renderDict() {
-  const hist = store.get('dhist', []);
-  shell('Từ điển Anh – Việt', `<input id="dq" type="search" placeholder="Nhập từ hoặc cụm từ tiếng Anh..." value="${esc(S.dq)}" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false">
+  const vi = S.dmode === 'vi', hk = vi ? 'dhist_vi' : 'dhist', hist = store.get(hk, []);
+  shell('Từ điển', `<div class="tabs"><button data-dm="en" class="${vi ? '' : 'on'}">Anh → Việt</button><button data-dm="vi" class="${vi ? 'on' : ''}">Việt → Anh</button></div>
+  <input id="dq" type="search" placeholder="${vi ? 'Nhập từ tiếng Việt (có dấu hoặc không dấu)...' : 'Nhập từ hoặc cụm từ tiếng Anh...'}" value="${esc(S.dq)}" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false">
   <div class="chips scroll" id="dsug"></div><div id="dres"></div>
-  <p class="muted" style="margin-top:20px">Dữ liệu: ~105.000 từ & cụm từ, có phiên âm và ví dụ. CC BY-SA 4.0 (MinhQND, Wiktionary…).</p>`);
+  <p class="muted" style="margin-top:20px">Dữ liệu từ điển: hơn 1,3 triệu mục Anh–Việt (có phiên âm, ví dụ) và ~159.000 mục Việt–Anh. Nguồn: MinhQND, Wiktionary. CC BY-SA 4.0. Mục chưa có nghĩa tiếng Việt có thể dịch bằng AI.</p>`);
+  $app.querySelectorAll('[data-dm]').forEach(b => b.onclick = () => { S.dmode = b.dataset.dm; S.dq = ''; renderDict(); });
   const res = document.getElementById('dres'), sug = document.getElementById('dsug'), inp = document.getElementById('dq');
+  const base = vi ? '/api/dict/vi' : '/api/dict';
   const showHist = () => { res.innerHTML = hist.length ? `<h2>Đã tra gần đây</h2><div class="chips">${hist.map(h => `<button class="chip" data-h="${esc(h)}">${esc(h)}</button>`).join('')}</div>` : ''; res.querySelectorAll('[data-h]').forEach(b => b.onclick = () => look(b.dataset.h)); };
-  async function look(w) {
+  async function look(w, forceEn) {
     w = w.trim(); if (!w) return;
+    if (forceEn && vi) { S.dmode = 'en'; S.dq = w; return renderDict(); }
     inp.value = S.dq = w; sug.innerHTML = ''; res.innerHTML = '<span class="dots">Đang tra</span>';
     try {
-      const r = await api('/api/dict?q=' + encodeURIComponent(w));
-      res.innerHTML = dictHtml(r); bindSay(res);
-      if (r.found) { const h = [r.word, ...hist.filter(x => x !== r.word)].slice(0, 20); store.set('dhist', h); hist.splice(0, hist.length, ...h); }
+      const r = await api(base + '?q=' + encodeURIComponent(w));
+      res.innerHTML = vi ? viHtml(r) : dictHtml(r); bindDict(res, x => look(x, true));
+      if (r.found) { const key = vi ? w : r.word; const h = [key, ...hist.filter(x => x !== key)].slice(0, 20); store.set(hk, h); hist.splice(0, hist.length, ...h); }
     } catch (e) { res.textContent = '⚠️ ' + e.message; }
   }
   inp.oninput = () => {
     S.dq = inp.value; clearTimeout(dictTimer);
     if (!inp.value.trim()) { sug.innerHTML = ''; return showHist(); }
     dictTimer = setTimeout(async () => {
-      try { const l = await api('/api/dict/suggest?q=' + encodeURIComponent(inp.value)); sug.innerHTML = l.map(w => `<button class="chip" data-s="${esc(w)}">${esc(w)}</button>`).join(''); sug.querySelectorAll('[data-s]').forEach(b => b.onclick = () => look(b.dataset.s)); } catch {}
+      try { const l = await api(base + '/suggest?q=' + encodeURIComponent(inp.value)); sug.innerHTML = l.map(w => `<button class="chip" data-s="${esc(w)}">${esc(w)}</button>`).join(''); sug.querySelectorAll('[data-s]').forEach(b => b.onclick = () => look(b.dataset.s)); } catch {}
     }, 150);
   };
   inp.onkeydown = e => { if (e.key === 'Enter') { inp.blur(); look(inp.value); } };
   S.dq ? look(S.dq) : showHist();
+}
+
+/* ---------- pronunciation ---------- */
+const PRON_EX = ['Nice to meet you', 'Did you eat it all', 'What do you want to do', 'Pick it up and put it on', 'I want to go out of the office', 'Could you give him a call', 'Last night I had fish and chips'];
+let pronCache = {};
+async function pronData(k, url) { return pronCache[k] || (pronCache[k] = await api(url)); }
+function renderPron() {
+  S.ptab = S.ptab || 'link';
+  shell('Phát âm', `<div class="tabs"><button data-pt="link" class="${S.ptab === 'link' ? 'on' : ''}">Nối âm</button><button data-pt="sounds" class="${S.ptab === 'sounds' ? 'on' : ''}">Các âm</button><button data-pt="guide" class="${S.ptab === 'guide' ? 'on' : ''}">Mẹo</button></div><div id="pb"></div>`);
+  $app.querySelectorAll('[data-pt]').forEach(b => b.onclick = () => { S.ptab = b.dataset.pt; renderPron(); });
+  const pb = document.getElementById('pb');
+  if (S.ptab === 'link') pronLink(pb); else if (S.ptab === 'sounds') pronSounds(pb); else pronGuide(pb);
+}
+function pronLink(pb) {
+  pb.innerHTML = `<p class="muted">Gõ một câu tiếng Anh để xem cách NỐI ÂM, lược âm và dạng đọc yếu khi nói nhanh.</p>
+  <input id="lt" placeholder="vd: Did you eat it all?" value="${esc(S.lt || '')}" autocapitalize="none" autocorrect="off" spellcheck="false">
+  <div class="chips scroll">${PRON_EX.map(x => `<button class="chip" data-x="${esc(x)}">${esc(x)}</button>`).join('')}</div>
+  <button class="btn full" id="lg" style="margin-top:6px">Phân tích nối âm</button><div id="lr"></div>`;
+  const run = async () => {
+    const t = document.getElementById('lt').value.trim(); S.lt = t; if (!t) return;
+    const out = document.getElementById('lr'); out.innerHTML = '<span class="dots">Đang phân tích</span>';
+    try {
+      const r = await api('/api/pron/link?text=' + encodeURIComponent(t));
+      out.innerHTML = `<div class="card"><div class="row"><div style="flex:1"><div class="muted">Khi nói nhanh:</div><div class="ipa" style="font-size:17px">${esc(r.linked)}</div>
+        <div class="vi" style="font-size:17px">≈ ${esc(r.vi_respell)}</div></div><button class="icon" data-say="${esc(t)}">🔊</button></div></div>
+      ${r.unknown.length ? `<p class="muted">Không có phiên âm cho: ${esc(r.unknown.join(', '))}</p>` : ''}
+      ${r.links.length ? `<h2>Chỗ nối âm (${r.links.length})</h2>` + r.links.map(l => `<div class="card"><b>${esc(l.pair)}</b> <span class="chip on" style="padding:3px 8px;font-size:12px">${esc(l.type)}</span><div class="muted" style="margin-top:6px">${esc(l.vi)}</div></div>`).join('') : '<p class="muted">Không tìm thấy chỗ nối đặc biệt trong câu này.</p>'}
+      ${r.weak.length ? `<h2>Dạng đọc yếu</h2><div class="card">${r.weak.map(w => `<div><b>${esc(w.w)}</b> /${esc((w.strong || '').replace(/[ˈˌ]/g, ''))}/ → <b>/${esc(w.weak)}/</b>${w.note ? ' <span class="muted">(' + esc(w.note) + ')</span>' : ''}</div>`).join('')}</div>` : ''}
+      <p class="muted">💡 ${esc(r.stress_tip)}</p>`;
+      bindDict(out, () => {});
+    } catch (e) { out.textContent = '⚠️ ' + e.message; }
+  };
+  document.getElementById('lg').onclick = run;
+  document.getElementById('lt').onkeydown = e => { if (e.key === 'Enter') { e.target.blur(); run(); } };
+  pb.querySelectorAll('[data-x]').forEach(b => b.onclick = () => { document.getElementById('lt').value = b.dataset.x; run(); });
+  if (S.lt) run();
+}
+async function pronSounds(pb) {
+  pb.innerHTML = '<span class="dots">Đang tải</span>';
+  const l = await pronData('sounds', '/api/pron/sounds');
+  pb.innerHTML = `<p class="muted">${l.length} âm tiếng Anh và cách đặt miệng, lưỡi cho người Việt. Chạm 🔊 để nghe từ ví dụ.</p>` + l.map(x => `<div class="card"><div class="row"><b class="ipa-chip">/${esc(x.ipa)}/</b><div style="flex:1"><b>${esc(x.name)}</b></div></div>
+  <div class="muted" style="margin:6px 0">${esc(x.how)}</div><div class="chips">${x.eg.split(/,\s*/).map(w => `<button class="chip" data-say="${esc(w.replace(/\s*\(.*\)/, ''))}">🔊 ${esc(w)}</button>`).join('')}</div></div>`).join('');
+  bindDict(pb, () => {});
+}
+async function pronGuide(pb) {
+  pb.innerHTML = '<span class="dots">Đang tải</span>';
+  const g = await pronData('guide', '/api/pron/guide');
+  pb.innerHTML = g.map((sec, i) => `<details class="card" ${i === 0 ? 'open' : ''}><summary><b>${esc(sec.title)}</b></summary>${sec.items.map(it => `<div class="def"><b>${esc(it.h)}</b><div class="muted">${esc(it.t)}</div>${it.eg ? `<div class="ex">${esc(it.eg)}${it.eg.length < 90 ? ' ' + sayBtn(it.eg.split(/[→–—;]/)[0].replace(/[“”]/g, '').trim()) : ''}</div>` : ''}</div>`).join('')}</details>`).join('');
+  bindDict(pb, () => {});
 }
 
 /* ---------- talk (AI chat) ---------- */
@@ -311,6 +403,7 @@ function renderSettings() {
 function route() {
   if (S.tab === 'learn') S.topic ? renderTopic() : renderLearn();
   else if (S.tab === 'dict') renderDict();
+  else if (S.tab === 'pron') renderPron();
   else if (S.tab === 'talk') renderTalk();
   else renderSettings();
 }

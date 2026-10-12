@@ -68,3 +68,15 @@ label{display:block;font-size:13px;color:var(--mut);margin:12px 0 4px}
 .sheet{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:flex-end;justify-content:center;z-index:50}
 .sheet-in{background:var(--bg);width:100%;max-width:560px;max-height:82dvh;overflow-y:auto;border-radius:20px 20px 0 0;padding:16px 16px calc(env(safe-area-inset-bottom) + 16px);border-top:1px solid #334155}
 input[type=search]{-webkit-appearance:none}
+
+.en{color:#cbd5e1;font-size:15px}
+.say{color:var(--ac2);font-style:normal}
+.pron{background:var(--card);border-radius:12px;padding:10px 12px;margin:10px 0}
+.pron summary,details.card summary{cursor:pointer;color:var(--ac)}
+details.card summary b{color:var(--tx)}
+.tip{margin:6px 0;font-size:14px;color:#cbd5e1}
+.snd{margin:8px 0}
+.ipa-chip{background:var(--card2);border-radius:8px;padding:2px 8px;color:var(--ac);font-weight:600}
+.vm{display:flex;align-items:center;gap:8px;margin:6px 0}
+a.enw,.def a{color:var(--ac);font-weight:600;font-size:17px;text-decoration:none}
+nav button{font-size:11px}

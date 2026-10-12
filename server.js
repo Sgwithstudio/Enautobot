@@ -6,6 +6,7 @@ const env = require('./lib/env');
 const codex = require('./lib/codex');
 const tts = require('./lib/tts');
 const dict = require('./lib/dict');
+const pron = require('./lib/pron');
 
 const PORT = parseInt(env.PORT || '3470', 10);
 const HOST = env.HOST || '127.0.0.1';
@@ -91,9 +92,40 @@ async function api(req, res, url) {
   if (p === '/api/lessons') return json(res, 200, seed);
   if (p === '/api/dict') {
     const r = dict.lookup(url.searchParams.get('q'));
-    return r ? json(res, 200, r) : json(res, 503, { error: 'Chưa có dữ liệu từ điển (chạy scripts/get-dict.sh)' });
+    if (!r) return json(res, 503, { error: 'Chưa có dữ liệu từ điển (chạy scripts/get-dict.sh)' });
+    if (r.found) {
+      r.ipa = r.ipa.map(i => ({ ...i, say: pron.respell(i.ipa) }));
+      const first = r.ipa[0];
+      r.pron = first ? pron.wordTips(r.word, first.ipa) : null;
+    }
+    r.counts = dict.counts();
+    return json(res, 200, r);
   }
   if (p === '/api/dict/suggest') return json(res, 200, dict.suggest(url.searchParams.get('q'), 12));
+  if (p === '/api/dict/vi') {
+    const r = dict.lookupVi(url.searchParams.get('q'));
+    if (!r) return json(res, 503, { error: 'Chưa có từ điển Việt–Anh (chạy scripts/build-dict.js)' });
+    for (const row of r.rows || []) for (const m of (row.m || []).slice(0, 6)) {
+      const ip = dict.ipasOf(m.e)[0];
+      if (ip) { m.ipa = ip.ipa; m.say = pron.respell(ip.ipa); }
+    }
+    return json(res, 200, r);
+  }
+  if (p === '/api/dict/vi/suggest') return json(res, 200, dict.suggestVi(url.searchParams.get('q'), 12));
+  if (p === '/api/dict/translate') {
+    const w = clip(url.searchParams.get('q'), 60).toLowerCase().trim(), r = dict.lookup(w);
+    if (!r || !r.found) return json(res, 404, { error: 'Không có từ này' });
+    const glosses = r.defs.filter(d => d.en).slice(0, 4).map(d => `${d.pos}: ${d.en.slice(0, 160)}`);
+    try {
+      return json(res, 200, await cached(`dtr|${w}`, () => codex.askJson(`Dịch nghĩa từ tiếng Anh "${r.word}" sang tiếng Việt cho người học. Định nghĩa gốc:\n${glosses.join('\n')}\nTrả JSON: {"vi":["nghĩa tiếng Việt ngắn gọn, tự nhiên cho từng định nghĩa theo đúng thứ tự (mỗi định nghĩa một chuỗi)"],"ex":"một câu ví dụ tiếng Anh tự nhiên dùng từ này","exvi":"dịch tiếng Việt"}`)));
+    } catch (e) { return json(res, 502, { error: e.message }); }
+  }
+  if (p === '/api/pron/link') {
+    const r = pron.analyze(url.searchParams.get('text'));
+    return json(res, r.error ? 400 : 200, r);
+  }
+  if (p === '/api/pron/guide') return json(res, 200, pron.GUIDE);
+  if (p === '/api/pron/sounds') return json(res, 200, Object.entries(pron.TIPS).map(([ipa, t]) => ({ ipa, name: t[0], how: t[1], eg: t[2] })));
   if (p === '/api/tts') {
     try {
       const f = await tts.synth(url.searchParams.get('text'), url.searchParams.get('voice'), url.searchParams.get('rate'));
